@@ -1,7 +1,19 @@
 package auto_ckz.domain.customer;
 
-/**
- * Created by owen on 05/11/16.
- */
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Data
 public class Customer {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String phoneNumber;
 }
