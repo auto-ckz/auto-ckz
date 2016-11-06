@@ -1,6 +1,7 @@
-package auto_ckz.domain;
+package auto_ckz.domain.repairhistory;
 
 import auto_ckz.domain.abstracts.AbstractEntity;
+import auto_ckz.domain.car.Car;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -8,18 +9,22 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.sql.Date;
 
 @Entity
 @Data
-public class CarPart extends AbstractEntity {
+public class RepairHistory extends AbstractEntity{
 
-    @Length(max = 50)
-    private String name;
+    @Length(max = 200)
+    private String description;
 
-    @Length(max = 6)
+    private Date date;
+
+    @Length(max = 10)
     private int cost;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "repairId", nullable = false)
-    private Repair repair;
+    @JoinColumn(name = "carId", nullable = false)
+    private Car car;
+
 }

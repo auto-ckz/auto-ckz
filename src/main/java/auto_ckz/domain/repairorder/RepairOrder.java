@@ -1,6 +1,9 @@
-package auto_ckz.domain;
+package auto_ckz.domain.repairorder;
 
 import auto_ckz.domain.abstracts.AbstractEntity;
+import auto_ckz.domain.car.Car;
+import auto_ckz.domain.memberofcustomerservice.MemberOfCustomerService;
+import auto_ckz.domain.client.Client;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

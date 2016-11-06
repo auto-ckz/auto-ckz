@@ -1,4 +1,4 @@
-package auto_ckz.domain;
+package auto_ckz.domain.mechanic;
 
 import auto_ckz.domain.abstracts.AbstractPersonEntity;
 import lombok.Data;
@@ -8,9 +8,8 @@ import javax.persistence.Entity;
 
 @Entity
 @Data
-public class MemberOfCustomerService extends AbstractPersonEntity {
+public class Mechanic extends AbstractPersonEntity {
 
-   @Length(max = 11)
-   private int pesel;
-
+    @Length(max = 11)
+    private int pesel;
 }

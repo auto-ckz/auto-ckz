@@ -1,6 +1,6 @@
 package auto_ckz.domain.abstracts;
 
-import auto_ckz.domain.Address;
+import auto_ckz.domain.address.Address;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

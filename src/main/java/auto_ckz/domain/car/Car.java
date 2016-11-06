@@ -1,4 +1,4 @@
-package auto_ckz.domain;
+package auto_ckz.domain.car;
 
 import auto_ckz.domain.abstracts.AbstractEntity;
 import lombok.Data;
@@ -24,12 +24,12 @@ public class Car extends AbstractEntity {
     private String registrationNumber;
 
     @Length(max = 17)
-    private String Vin;
+    private String vin;
 
     private Date dateOfFirstRegistration;
 
     @Length(max = 50)
-    private String OC;
+    private String oc;
 
     private boolean vehicleCheckup;
 

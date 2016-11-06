@@ -1,4 +1,4 @@
-package auto_ckz.domain;
+package auto_ckz.domain.address;
 
 import auto_ckz.domain.abstracts.AbstractEntity;
 import lombok.Data;
