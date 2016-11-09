@@ -10,5 +10,5 @@ import java.util.List;
 public interface PersonRepository<T extends AbstractPersonEntity>  extends PagingAndSortingRepository<T, Long>{
     List<T> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
     T findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
-    T findByPesel(@Param("pesel") String pesel);
+    T findByPesel(@Param("pesel") Long pesel);
 }

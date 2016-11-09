@@ -20,6 +20,6 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     @Column(unique = true)
     private String pesel;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Address address;
 }
