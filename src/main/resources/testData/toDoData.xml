@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <car id="1" make="Audi" model="A8" year="2006" registrationNumber="GA5424" vin="HF3JF4JVJ36JVJEKD" dateOfFirstRegistration="2006-03-23" oc="6346gf234" vehicleCheckup="1" vehicleMileage="200000" engineCapacity="2200" enginePower="198" fuelType="diesel"/>
+    <car id="2" make="Audi" model="Q4" year="2014" registrationNumber="GDA324" vin="GF834934F98HFIHF9" dateOfFirstRegistration="2014-02-11" oc="543uh2i43" vehicleCheckup="1" vehicleMileage="123431" engineCapacity="4800" enginePower="460" fuelType="petrol"/>
+    <address id="1" city="Gdynia" houseNumber="2" street="Ikara" zipCode="82153" />
+    <address id="2" city="Sopot" houseNumber="7" street="Maja" zipCode="81324" />
+    <address id="3" city="Bialystok" houseNumber="1" street="Nowa" zipCode="81253" />
+    <address id="4" city="Gdansk" houseNumber="4" street="Zaplecza" zipCode="83224" />
+    <address id="5" city="Bytom" houseNumber="7" street="Kijana" zipCode="92543" />
+    <address id="6" city="Katowice" houseNumber="8" street="Rycha" zipCode="91245" />
+    <address id="7" city="Bydgoszcz" houseNumber="12" street="Karola" zipCode="82542" />
+    <address id="8" city="Kartuzy" houseNumber="2" street="Polna" zipCode="85432" />
+    <client id="1" firstName="Marek" lastName="Nowak" phoneNumber="94332454343" pesel="95021232434" email="maN@wp.pl" address_id="1" />
+    <client id="2" firstName="Marek" lastName="Nowak" phoneNumber="84322345223" pesel="92013143254" email="wiK@wp.pl" address_id="2" />
+    <director id="1" firstName="Karol" lastName="Kowal" phoneNumber="64354354353" pesel="86354534545" address_id="3" />
+    <director id="2" firstName="Karol" lastName="Kowal" phoneNumber="32534634656" pesel="74532636455" address_id="4" />
+    <mechanic id="1" firstName="David" lastName="Kos" phoneNumber="94235435454" pesel="93245435435" address_id="5" />
+    <mechanic id="2" firstName="David" lastName="Kos" phoneNumber="24652524555" pesel="98432465664" address_id="6" />
+    <memberofcustomerservice id="1" firstName="Wojtek" lastName="Kowalski" phoneNumber="96345253242" pesel="91235436565" address_id="7" />
+    <memberofcustomerservice id="2" firstName="Wojtek" lastName="Kowalski" phoneNumber="93432423653" pesel="93634676424" address_id="8" />
+</dataset>
