@@ -4,9 +4,7 @@ import auto_ckz.domain.address.Address;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.FetchType;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @MappedSuperclass
 @Data
@@ -17,8 +15,11 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     @Length(max = 50)
     private String lastName;
     @Length(max = 12)
-    private int phoneNumber;
+    private String phoneNumber;
+    @Length(min = 11, max = 11)
+    @Column(unique = true)
+    private Long pesel;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Address address;
 }

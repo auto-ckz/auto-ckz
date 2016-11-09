@@ -10,7 +10,6 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import java.sql.Date;
 
 @Entity
@@ -25,7 +24,7 @@ public class RepairOrder extends AbstractEntity {
     @JoinColumn(name = "memberOfCustomerServiceId", nullable = false)
     private MemberOfCustomerService memberOfCustomerService;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "carId", nullable = false)
     private Car car;
 

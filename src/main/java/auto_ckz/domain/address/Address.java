@@ -19,7 +19,7 @@ public class Address extends AbstractEntity {
     @Length(max = 10)
     private String houseNumber;
 
-    @Length(max = 7)
+    @Length(max = 6, min = 6)
     private String zipCode;
 
 }

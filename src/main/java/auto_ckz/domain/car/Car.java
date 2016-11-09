@@ -3,6 +3,7 @@ package auto_ckz.domain.car;
 import auto_ckz.domain.abstracts.AbstractEntity;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
 import java.sql.Date;
@@ -17,13 +18,13 @@ public class Car extends AbstractEntity {
     @Length(max = 50)
     private String model;
 
-    @Length(max = 4)
+    @Range(min = 1900, max = 2016)
     private int year;
 
     @Length(max = 50)
     private String registrationNumber;
 
-    @Length(max = 17)
+    @Length(min = 17, max = 17)
     private String vin;
 
     private Date dateOfFirstRegistration;
@@ -33,7 +34,7 @@ public class Car extends AbstractEntity {
 
     private boolean vehicleCheckup;
 
-    @Length(max = 7)
+    @Range(max = 9999999)
     private int vehicleMileage;
 
     @Length(max = 10)

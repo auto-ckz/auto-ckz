@@ -4,6 +4,7 @@ import auto_ckz.domain.repair.Repair;
 import auto_ckz.domain.abstracts.AbstractEntity;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +18,7 @@ public class CarPart extends AbstractEntity {
     @Length(max = 50)
     private String name;
 
-    @Length(max = 6)
+    @Range(max = 999999)
     private int cost;
 
     @ManyToOne(fetch = FetchType.LAZY)
