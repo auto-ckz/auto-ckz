@@ -13,9 +13,6 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
@@ -28,26 +25,24 @@ import auto_ckz.config.*;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("/testData/toDoDataCar.xml")
+@DatabaseSetup("/testData/toDoData.xml")
 public class CarTest {
 
     @Autowired
     private CarRepository repository;
 
     @Test
-    public void search_OneTodoEntryFound_ShouldReturnAListOfOneEntry() throws ParseException {
-        List<Car> carsEntries = repository.findByModel("A8");
+    public void NoEntries_findByMake_ShouldReturnEmptyList() {
+        List<Car> carsEntries = repository.findByMake("NOT FOUND");
+        assertThat(carsEntries.size(), is(0));
+    }
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 2006);
-        calendar.set(Calendar.MONTH, 2); // Assuming you wanted May 1st
-        calendar.set(Calendar.DAY_OF_MONTH, 23);
+    @Test
+    public void findByRegistrationNumber_ShouldReturnOneCarEntry() throws ParseException {
+        Car carEntries = repository.findByRegistrationNumber("GA5424");
 
-        java.sql.Date date = new java.sql.Date(calendar.getTime().getTime());
-        System.out.println(date);
 
-        assertThat(carsEntries.size(), is(1));
-        assertThat(carsEntries.get(0), allOf(
+        assertThat(carEntries, allOf(
                 hasProperty("id", is(1L)),
                 hasProperty("make", is("Audi")),
                 hasProperty("model", is("A8")),
@@ -55,12 +50,94 @@ public class CarTest {
                 hasProperty("registrationNumber", is("GA5424")),
                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
                 hasProperty("dateOfFirstRegistration", notNullValue()),
-                hasProperty("oc", is("wykupione")),
+                hasProperty("oc", is("6346gf234")),
                 hasProperty("vehicleCheckup", is(true)),
                 hasProperty("vehicleMileage", is(200000)),
                 hasProperty("engineCapacity", is("2200")),
                 hasProperty("enginePower", is("198")),
                 hasProperty("fuelType", is("diesel"))
+        ));
+    }
+
+    @Test
+    public void findByVin_ShouldReturnOneCarEntry() throws ParseException {
+        Car carEntries = repository.findByVin("HF3JF4JVJ36JVJEKD");
+
+
+        assertThat(carEntries, allOf(
+                hasProperty("id", is(1L)),
+                hasProperty("make", is("Audi")),
+                hasProperty("model", is("A8")),
+                hasProperty("year", is(2006)),
+                hasProperty("registrationNumber", is("GA5424")),
+                hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
+                hasProperty("dateOfFirstRegistration", notNullValue()),
+                hasProperty("oc", is("6346gf234")),
+                hasProperty("vehicleCheckup", is(true)),
+                hasProperty("vehicleMileage", is(200000)),
+                hasProperty("engineCapacity", is("2200")),
+                hasProperty("enginePower", is("198")),
+                hasProperty("fuelType", is("diesel"))
+        ));
+    }
+
+    @Test
+    public void findByOc_ShouldReturnOneCarEntry() throws ParseException {
+        Car carEntries = repository.findByOc("6346gf234");
+
+
+        assertThat(carEntries, allOf(
+                hasProperty("id", is(1L)),
+                hasProperty("make", is("Audi")),
+                hasProperty("model", is("A8")),
+                hasProperty("year", is(2006)),
+                hasProperty("registrationNumber", is("GA5424")),
+                hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
+                hasProperty("dateOfFirstRegistration", notNullValue()),
+                hasProperty("oc", is("6346gf234")),
+                hasProperty("vehicleCheckup", is(true)),
+                hasProperty("vehicleMileage", is(200000)),
+                hasProperty("engineCapacity", is("2200")),
+                hasProperty("enginePower", is("198")),
+                hasProperty("fuelType", is("diesel"))
+        ));
+    }
+
+    @Test
+    public void twoFindByMake_ShouldReturnAListOfTwoEntries() {
+        List<Car> carEntries = repository.findByMake("Audi");
+        assertThat(carEntries.size(), is(2));
+        assertThat(carEntries, contains(
+                allOf(
+                        hasProperty("id", is(1L)),
+                        hasProperty("make", is("Audi")),
+                        hasProperty("model", is("A8")),
+                        hasProperty("year", is(2006)),
+                        hasProperty("registrationNumber", is("GA5424")),
+                        hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
+                        hasProperty("dateOfFirstRegistration", notNullValue()),
+                        hasProperty("oc", is("6346gf234")),
+                        hasProperty("vehicleCheckup", is(true)),
+                        hasProperty("vehicleMileage", is(200000)),
+                        hasProperty("engineCapacity", is("2200")),
+                        hasProperty("enginePower", is("198")),
+                        hasProperty("fuelType", is("diesel"))
+                ),
+                allOf(
+                        hasProperty("id", is(2L)),
+                        hasProperty("make", is("Audi")),
+                        hasProperty("model", is("Q4")),
+                        hasProperty("year", is(2014)),
+                        hasProperty("registrationNumber", is("GDA324")),
+                        hasProperty("vin", is("GF834934F98HFIHF9")),
+                        hasProperty("dateOfFirstRegistration", notNullValue()),
+                        hasProperty("oc", is("543uh2i43")),
+                        hasProperty("vehicleCheckup", is(true)),
+                        hasProperty("vehicleMileage", is(123431)),
+                        hasProperty("engineCapacity", is("4800")),
+                        hasProperty("enginePower", is("460")),
+                        hasProperty("fuelType", is("petrol"))
+                )
         ));
     }
 }
