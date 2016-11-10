@@ -18,7 +18,7 @@ public class Car extends AbstractEntity {
     @Length(max = 50)
     private String model;
 
-    @Range(min = 1900, max = 2016)
+    @Range(min = 1900)
     private int year;
 
     @Length(max = 50)
@@ -34,7 +34,7 @@ public class Car extends AbstractEntity {
 
     private boolean vehicleCheckup;
 
-    @Range(max = 9999999)
+    @Range(min = 0, max = 9999999)
     private int vehicleMileage;
 
     @Length(max = 10)

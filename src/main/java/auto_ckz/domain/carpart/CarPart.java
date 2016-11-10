@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -18,8 +19,8 @@ public class CarPart extends AbstractEntity {
     @Length(max = 50)
     private String name;
 
-    @Range(max = 999999)
-    private int cost;
+    @Range(min =0, max = 999999)
+    private BigDecimal cost;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "repairId", nullable = false)

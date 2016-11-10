@@ -4,6 +4,7 @@ import auto_ckz.domain.abstracts.AbstractEntity;
 import auto_ckz.domain.car.Car;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,7 @@ public class RepairHistory extends AbstractEntity{
 
     private Date date;
 
-    @Length(max = 10)
+    @Range(min =0, max = 999999)
     private BigDecimal cost;
 
     @ManyToOne(fetch = FetchType.LAZY)
