@@ -18,4 +18,10 @@
     <mechanic id="2" firstName="David" lastName="Kos" phoneNumber="24652524555" pesel="98432465664" address_id="6" />
     <memberofcustomerservice id="1" firstName="Wojtek" lastName="Kowalski" phoneNumber="96345253242" pesel="91235436565" address_id="7" />
     <memberofcustomerservice id="2" firstName="Wojtek" lastName="Kowalski" phoneNumber="93432423653" pesel="93634676424" address_id="8" />
+    <repairorder id="1" clientid="1" memberofcustomerserviceid="1" carid="1" date="2016-03-19" totalCost="400" />
+    <repairorder id="2" clientid="2" memberofcustomerserviceid="2" carid="2" date="2016-03-19" totalCost="200" />
+    <repairhistory id="1" description="Wymiana skrzyni biegow" date="2014-02-11" cost="450" carid="1" />
+    <repairhistory id="2" description="Wymiana amortyzatorow z przodu i z tylu" date="2015-04-12" cost="520" carid="1" />
+    <repair id="1" description="Wymiana klockow hamulcowych" status="IN_PROGRESS" repairorderid="1" mechanicid="1" />
+    <repair id="2" description="Wymiana oleju silnika" status="DONE" repairorderid="1" mechanicid="2" />
 </dataset>

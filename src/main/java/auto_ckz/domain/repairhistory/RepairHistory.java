@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
@@ -25,7 +24,7 @@ public class RepairHistory extends AbstractEntity{
     @Range(min =0, max = 999999)
     private BigDecimal cost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carId", nullable = false)
     private Car car;
 
