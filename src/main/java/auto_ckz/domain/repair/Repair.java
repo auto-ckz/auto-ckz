@@ -13,18 +13,17 @@ import javax.persistence.*;
 @Data
 public class Repair extends AbstractEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "repairOrderId", nullable = false)
-    private RepairOrder repairOrder;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mechanicId", nullable = false)
-    private Mechanic mechanic;
-
     @Length(max = 200)
     private String description;
 
     @Enumerated(EnumType.STRING)
     private RepairStatus status;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "repairOrderId", nullable = false)
+    private RepairOrder repairOrder;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "mechanicId", nullable = false)
+    private Mechanic mechanic;
 }
