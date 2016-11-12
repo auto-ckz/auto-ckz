@@ -5,11 +5,12 @@ import auto_ckz.domain.car.Car;
 import auto_ckz.domain.memberofcustomerservice.MemberOfCustomerService;
 import auto_ckz.domain.client.Client;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
@@ -30,7 +31,7 @@ public class RepairOrder extends AbstractEntity {
 
     private Date date;
 
-    @Length(max = 6)
-    private int totalCost;
+    @Range(min = 0, max = 999999)
+    private BigDecimal totalCost;
 
 }
