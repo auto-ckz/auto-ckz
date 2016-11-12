@@ -18,7 +18,7 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     private String phoneNumber;
     @Length(min = 11, max = 11)
     @Column(unique = true)
-    private Long pesel;
+    private String pesel;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Address address;
