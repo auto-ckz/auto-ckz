@@ -11,4 +11,5 @@ public interface PersonRepository<T extends AbstractPersonEntity>  extends Pagin
     List<T> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
     T findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
     T findByPesel(@Param("pesel") String pesel);
+    T findByAccountId(@Param("accountId") Long accountId);
 }

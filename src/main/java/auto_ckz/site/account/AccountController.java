@@ -2,6 +2,7 @@ package auto_ckz.site.account;
 
 import java.security.Principal;
 
+import auto_ckz.common.constant.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -26,7 +27,12 @@ class AccountController {
     @RequestMapping(value = "account/current", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+    @Secured({
+            Role.ROLE_DIRECTOR,
+            Role.ROLE_MECHANIC,
+            Role.ROLE_MEMBER,
+            Role.ROLE_CLIENT
+    })
     public Account currentAccount(Principal principal) {
         Assert.notNull(principal);
         return accountRepository.findOneByEmail(principal.getName());
@@ -35,7 +41,7 @@ class AccountController {
     @RequestMapping(value = "account/{id}", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    @Secured("ROLE_ADMIN")
+    @Secured(Role.ROLE_DIRECTOR)
     public Account account(@PathVariable("id") Long id) {
         return accountRepository.findOne(id);
     }

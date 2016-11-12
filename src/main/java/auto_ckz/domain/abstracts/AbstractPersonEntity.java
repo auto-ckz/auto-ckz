@@ -1,6 +1,7 @@
 package auto_ckz.domain.abstracts;
 
 import auto_ckz.domain.address.Address;
+import auto_ckz.site.account.Account;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -20,6 +21,10 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     @Column(unique = true)
     private String pesel;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    private Account account;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Address address;
+
 }

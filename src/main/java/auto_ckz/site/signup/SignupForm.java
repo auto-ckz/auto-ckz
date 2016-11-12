@@ -1,5 +1,6 @@
 package auto_ckz.site.signup;
 
+import auto_ckz.common.constant.Role;
 import org.hibernate.validator.constraints.*;
 
 import auto_ckz.site.account.Account;
@@ -33,6 +34,6 @@ public class SignupForm {
 	}
 
 	public Account createAccount() {
-        return new Account(getEmail(), getPassword(), "ROLE_USER");
+        return new Account(getEmail(), getPassword(), Role.ROLE_CLIENT);
 	}
 }

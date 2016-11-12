@@ -1,10 +1,12 @@
 package auto_ckz.site.account;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 import java.time.Instant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 @SuppressWarnings("serial")
 @Entity
@@ -15,19 +17,22 @@ public class Account implements java.io.Serializable {
 	@GeneratedValue
 	private Long id;
 
+	@Length(max = 100)
 	@Column(unique = true)
+	@Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+			+"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+			+"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+			message="{invalid.email}")
 	private String email;
 	
 	@JsonIgnore
 	private String password;
 
-	private String role = "ROLE_USER";
+	private String role;
 
 	private Instant created;
 
-    protected Account() {
-
-	}
+    protected Account() { }
 	
 	public Account(String email, String password, String role) {
 		this.email = email;
