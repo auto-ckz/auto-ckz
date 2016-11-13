@@ -5,7 +5,6 @@ import java.util.Collections;
 import javax.annotation.PostConstruct;
 
 import auto_ckz.common.constant.Role;
-import auto_ckz.site.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.*;
@@ -29,9 +28,6 @@ public class AccountService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@Autowired
-	private PersonService personService;
-
 	@PostConstruct	
 	protected void initialize() {
 		save(new Account("admin@admin.com", "admin",  Role.ROLE_DIRECTOR));
@@ -40,8 +36,7 @@ public class AccountService implements UserDetailsService {
 	@Transactional
 	public Account save(Account account) {
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
-		Account newAccount = accountRepository.save(account);
-		personService.save(newAccount);
+		accountRepository.save(account);
 		return account;
 	}
 

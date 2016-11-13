@@ -30,7 +30,7 @@ class AccountController {
     @Secured({
             Role.ROLE_DIRECTOR,
             Role.ROLE_MECHANIC,
-            Role.ROLE_MEMBER,
+            Role.ROLE_CUSTOMER_SERVICE,
             Role.ROLE_CLIENT
     })
     public Account currentAccount(Principal principal) {
