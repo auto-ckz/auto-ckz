@@ -1,5 +1,6 @@
 package auto_ckz.site.account;
 
+import auto_ckz.common.constant.Role;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -54,7 +55,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldReturnUserDetails() {
 		// arrange
-		Account demoUser = new Account("user@example.com", "demo", "ROLE_USER");
+		Account demoUser = new Account("user@example.com", "demo", Role.ROLE_CLIENT);
 		when(accountRepositoryMock.findOneByEmail("user@example.com")).thenReturn(demoUser);
 
 		// act
