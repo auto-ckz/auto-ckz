@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @Configuration
 @Profile("test")
-@Order(1)
+@Order(2)
 public class NoCsrfSecurityConfig extends SecurityConfig {
 
     @Override
