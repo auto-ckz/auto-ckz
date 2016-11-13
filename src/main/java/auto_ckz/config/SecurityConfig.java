@@ -23,7 +23,7 @@ import auto_ckz.site.account.AccountService;
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
-    @Order(2)
+    @Order(1)
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
             http.antMatcher("/rest/**").authorizeRequests().anyRequest().authenticated().and()
