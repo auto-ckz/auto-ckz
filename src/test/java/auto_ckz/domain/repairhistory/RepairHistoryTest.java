@@ -52,7 +52,7 @@ public class RepairHistoryTest {
                 hasProperty("id", is(1L)),
                 hasProperty("description", is("Wymiana skrzyni biegow")),
                 hasProperty("date", is(sqlDate)),
-                hasProperty("cost", is(450)),
+                hasProperty("cost", is(notNullValue())),
                 hasProperty("car", allOf(
                         hasProperty("make", is("Audi")),
                         hasProperty("model", is("A8")),
@@ -90,7 +90,7 @@ public class RepairHistoryTest {
                         hasProperty("id", is(1L)),
                         hasProperty("description", is("Wymiana skrzyni biegow")),
                         hasProperty("date", is(sqlDate)),
-                        hasProperty("cost", is(450)),
+                        hasProperty("cost", is(notNullValue())),
                         hasProperty("car", allOf(
                                 hasProperty("make", is("Audi")),
                                 hasProperty("model", is("A8")),
@@ -110,7 +110,7 @@ public class RepairHistoryTest {
                         hasProperty("id", is(2L)),
                         hasProperty("description", is("Wymiana amortyzatorow z przodu i z tylu")),
                         hasProperty("date", is(sqlDate1)),
-                        hasProperty("cost", is(520)),
+                        hasProperty("cost", is(notNullValue())),
                         hasProperty("car", allOf(
                                 hasProperty("make", is("Audi")),
                                 hasProperty("model", is("A8")),

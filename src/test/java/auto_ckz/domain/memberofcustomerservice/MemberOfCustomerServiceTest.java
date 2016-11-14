@@ -46,7 +46,7 @@ public class MemberOfCustomerServiceTest {
                 hasProperty("firstName", is("Wojtek")),
                 hasProperty("lastName", is("Kowalski")),
                 hasProperty("phoneNumber", is("96345253242")),
-                hasProperty("pesel", is(91235436565L)),
+                hasProperty("pesel", is("91235436565")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Karola")),
                         hasProperty("city", is("Bydgoszcz")),
@@ -58,14 +58,14 @@ public class MemberOfCustomerServiceTest {
 
     @Test
     public void findByPesel_ShouldReturnOneMemberOfCustomerServiceEntry() throws ParseException {
-        MemberOfCustomerService memberOfCustomerServicerEntries = repository.findByPesel(93634676424L);
+        MemberOfCustomerService memberOfCustomerServicerEntries = repository.findByPesel("93634676424");
 
         assertThat(memberOfCustomerServicerEntries, allOf(
                 hasProperty("id", is(2L)),
                 hasProperty("firstName", is("Wojtek")),
                 hasProperty("lastName", is("Kowalski")),
                 hasProperty("phoneNumber", is("93432423653")),
-                hasProperty("pesel", is(93634676424L)),
+                hasProperty("pesel", is("93634676424")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Polna")),
                         hasProperty("city", is("Kartuzy")),
@@ -85,7 +85,7 @@ public class MemberOfCustomerServiceTest {
                         hasProperty("firstName", is("Wojtek")),
                         hasProperty("lastName", is("Kowalski")),
                         hasProperty("phoneNumber", is("96345253242")),
-                        hasProperty("pesel", is(91235436565L)),
+                        hasProperty("pesel", is("91235436565")),
                         hasProperty("address", allOf(
                                 hasProperty("street", is("Karola")),
                                 hasProperty("city", is("Bydgoszcz")),
@@ -98,7 +98,7 @@ public class MemberOfCustomerServiceTest {
                         hasProperty("firstName", is("Wojtek")),
                         hasProperty("lastName", is("Kowalski")),
                         hasProperty("phoneNumber", is("93432423653")),
-                        hasProperty("pesel", is(93634676424L)),
+                        hasProperty("pesel", is("93634676424")),
                         hasProperty("address", allOf(
                                 hasProperty("street", is("Polna")),
                                 hasProperty("city", is("Kartuzy")),

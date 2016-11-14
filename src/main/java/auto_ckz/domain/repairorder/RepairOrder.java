@@ -2,8 +2,8 @@ package auto_ckz.domain.repairorder;
 
 import auto_ckz.domain.abstracts.AbstractEntity;
 import auto_ckz.domain.car.Car;
-import auto_ckz.domain.memberofcustomerservice.MemberOfCustomerService;
 import auto_ckz.domain.client.Client;
+import auto_ckz.domain.memberofcustomerservice.MemberOfCustomerService;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
@@ -17,6 +17,12 @@ import java.sql.Date;
 @Data
 public class RepairOrder extends AbstractEntity {
 
+
+    private Date date;
+
+    @Range(min = 0, max = 999999)
+    private BigDecimal totalCost;
+
     @ManyToOne
     @JoinColumn(name = "clientId", nullable = false)
     private Client client;
@@ -28,10 +34,5 @@ public class RepairOrder extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "carId", nullable = false)
     private Car car;
-
-    private Date date;
-
-    @Range(min = 0, max = 999999)
-    private BigDecimal totalCost;
 
 }
