@@ -47,7 +47,7 @@ public class MechanicTest {
                 hasProperty("firstName", is("David")),
                 hasProperty("lastName", is("Kos")),
                 hasProperty("phoneNumber", is("94235435454")),
-                hasProperty("pesel", is(93245435435L)),
+                hasProperty("pesel", is("93245435435")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Kijana")),
                         hasProperty("city", is("Bytom")),
@@ -59,14 +59,14 @@ public class MechanicTest {
 
     @Test
     public void findByPesel_ShouldReturnOneMechanicEntry() throws ParseException {
-        Mechanic mechanicEntries = repository.findByPesel(98432465664L);
+        Mechanic mechanicEntries = repository.findByPesel("98432465664");
 
         assertThat(mechanicEntries, allOf(
                 hasProperty("id", is(2L)),
                 hasProperty("firstName", is("David")),
                 hasProperty("lastName", is("Kos")),
                 hasProperty("phoneNumber", is("24652524555")),
-                hasProperty("pesel", is(98432465664L)),
+                hasProperty("pesel", is("98432465664")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Rycha")),
                         hasProperty("city", is("Katowice")),
@@ -86,7 +86,7 @@ public class MechanicTest {
                         hasProperty("firstName", is("David")),
                         hasProperty("lastName", is("Kos")),
                         hasProperty("phoneNumber", is("94235435454")),
-                        hasProperty("pesel", is(93245435435L)),
+                        hasProperty("pesel", is("93245435435")),
                         hasProperty("address", allOf(
                                 hasProperty("street", is("Kijana")),
                                 hasProperty("city", is("Bytom")),
@@ -99,7 +99,7 @@ public class MechanicTest {
                         hasProperty("firstName", is("David")),
                         hasProperty("lastName", is("Kos")),
                         hasProperty("phoneNumber", is("24652524555")),
-                        hasProperty("pesel", is(98432465664L)),
+                        hasProperty("pesel", is("98432465664")),
                         hasProperty("address", allOf(
                                 hasProperty("street", is("Rycha")),
                                 hasProperty("city", is("Katowice")),

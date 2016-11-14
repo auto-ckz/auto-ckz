@@ -18,8 +18,6 @@ import java.text.ParseException;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,7 +47,7 @@ public class ClientTest {
                 hasProperty("firstName", is("Marek")),
                 hasProperty("lastName", is("Nowak")),
                 hasProperty("phoneNumber", is("94332454343")),
-                hasProperty("pesel", is(95021232434L)),
+                hasProperty("pesel", is("95021232434")),
                 hasProperty("email", is("maN@wp.pl")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Ikara")),
@@ -61,14 +59,14 @@ public class ClientTest {
     }
     @Test
     public void findByPesel_ShouldReturnOneClientEntry() throws ParseException {
-        Client clientEntries = repository.findByPesel(92013143254L);
+        Client clientEntries = repository.findByPesel("92013143254");
 
         assertThat(clientEntries, allOf(
                 hasProperty("id", is(2L)),
                 hasProperty("firstName", is("Marek")),
                 hasProperty("lastName", is("Nowak")),
                 hasProperty("phoneNumber", is("84322345223")),
-                hasProperty("pesel", is(92013143254L)),
+                hasProperty("pesel", is("92013143254")),
                 hasProperty("email", is("wiK@wp.pl")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Maja")),
@@ -88,7 +86,7 @@ public class ClientTest {
                             hasProperty("firstName", is("Marek")),
                             hasProperty("lastName", is("Nowak")),
                             hasProperty("phoneNumber", is("94332454343")),
-                            hasProperty("pesel", is(95021232434L)),
+                            hasProperty("pesel", is("95021232434")),
                             hasProperty("email", is("maN@wp.pl")),
                             hasProperty("address", allOf(
                                     hasProperty("street", is("Ikara")),
@@ -102,7 +100,7 @@ public class ClientTest {
                             hasProperty("firstName", is("Marek")),
                             hasProperty("lastName", is("Nowak")),
                             hasProperty("phoneNumber", is("84322345223")),
-                            hasProperty("pesel", is(92013143254L)),
+                            hasProperty("pesel", is("92013143254")),
                             hasProperty("email", is("wiK@wp.pl")),
                             hasProperty("address", allOf(
                                     hasProperty("street", is("Maja")),
