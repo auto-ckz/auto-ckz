@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dataset>
-    <car id="1" make="Audi" model="A8" year="2006" registrationNumber="GA5424" vin="HF3JF4JVJ36JVJEKD" dateOfFirstRegistration="2006-03-23" oc="wykupione" vehicleCheckup="1" vehicleMileage="200000" engineCapacity="2200" enginePower="198" fuelType="diesel"/>
-</dataset>
