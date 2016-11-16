@@ -37,7 +37,7 @@ public class JpaConfigForTest {
         config.setDriverClassName("org.postgresql.Driver");
         config.setJdbcUrl("jdbc:postgresql:postgres");
         config.setUsername("postgres");
-        config.setPassword("kamil");
+        config.setPassword("postgres");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
