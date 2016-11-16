@@ -18,6 +18,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import auto_ckz.config.*;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {JpaConfigForTest.class})
@@ -26,6 +27,7 @@ import auto_ckz.config.*;
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("/testData/toDoData.xml")
+@Transactional
 public class CarTest {
 
     @Autowired

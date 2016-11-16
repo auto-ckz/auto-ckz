@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.util.List;
@@ -27,6 +28,7 @@ import static org.junit.Assert.assertThat;
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("/testData/toDoData.xml")
+@Transactional
 public class MechanicTest {
 
     @Autowired
