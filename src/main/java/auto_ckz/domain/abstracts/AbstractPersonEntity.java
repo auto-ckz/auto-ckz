@@ -1,4 +1,4 @@
-package auto_ckz.domain.abstracts;
+ package auto_ckz.domain.abstracts;
 
 import auto_ckz.domain.address.Address;
 import lombok.Data;
@@ -20,6 +20,6 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     @Column(unique = true)
     private String pesel;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Address address;
 }
