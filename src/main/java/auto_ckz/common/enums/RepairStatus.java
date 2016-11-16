@@ -1,4 +1,4 @@
-package auto_ckz.domain.enums;
+package auto_ckz.common.enums;
 
 public enum RepairStatus {
     NOT_STARTED,

@@ -26,7 +26,7 @@ import static org.junit.Assert.assertThat;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("/testData/toDoData.xml")
+@DatabaseSetup("/testData/testData.xml")
 @Transactional
 public class MemberOfCustomerServiceTest {
 

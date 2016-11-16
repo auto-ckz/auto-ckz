@@ -27,7 +27,7 @@ import static org.junit.Assert.assertThat;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
-@DatabaseSetup("/testData/toDoData.xml")
+@DatabaseSetup("/testData/testData.xml")
 @Transactional
 public class RepairHistoryTest {
 
@@ -44,9 +44,12 @@ public class RepairHistoryTest {
     public void findByDate_ShouldReturnOneRepairHistoryEntry() throws ParseException {
 
         String date_s = "2014-02-11";
+        String date_s1 = "2006-03-23";
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = dt.parse(date_s);
+        java.util.Date date1 = dt.parse(date_s1);
         java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
+        java.sql.Date sqlDate1 =  new java.sql.Date(date1.getTime());
 
         RepairHistory repairHistorytEntries = repository.findByDate(sqlDate);
 
@@ -61,7 +64,7 @@ public class RepairHistoryTest {
                         hasProperty("year", is(2006)),
                         hasProperty("registrationNumber", is("GA5424")),
                         hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                        hasProperty("dateOfFirstRegistration", notNullValue()),
+                        hasProperty("dateOfFirstRegistration", is(sqlDate1)),
                         hasProperty("oc", is("6346gf234")),
                         hasProperty("vehicleCheckup", is(true)),
                         hasProperty("vehicleMileage", is(200000)),
@@ -77,14 +80,15 @@ public class RepairHistoryTest {
         List<RepairHistory> repairHistoryEntries = repository.findByCarId(1L);
 
         String date_s = "2014-02-11";
+        String date_s1 = "2015-04-12";
+        String date_s2 = "2006-03-23";
         SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = dt.parse(date_s);
+        java.util.Date date1 = dt.parse(date_s1);
+        java.util.Date date2 = dt.parse(date_s2);
         java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-
-        String date_s1 = "2015-04-12";
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date date1 = dt1.parse(date_s1);
         java.sql.Date sqlDate1 =  new java.sql.Date(date1.getTime());
+        java.sql.Date sqlDate2 =  new java.sql.Date(date2.getTime());
 
         assertThat(repairHistoryEntries.size(), is(2));
         assertThat(repairHistoryEntries, contains(
@@ -99,7 +103,7 @@ public class RepairHistoryTest {
                                 hasProperty("year", is(2006)),
                                 hasProperty("registrationNumber", is("GA5424")),
                                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                                hasProperty("dateOfFirstRegistration", notNullValue()),
+                                hasProperty("dateOfFirstRegistration", is(sqlDate2)),
                                 hasProperty("oc", is("6346gf234")),
                                 hasProperty("vehicleCheckup", is(true)),
                                 hasProperty("vehicleMileage", is(200000)),
@@ -119,7 +123,7 @@ public class RepairHistoryTest {
                                 hasProperty("year", is(2006)),
                                 hasProperty("registrationNumber", is("GA5424")),
                                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                                hasProperty("dateOfFirstRegistration", notNullValue()),
+                                hasProperty("dateOfFirstRegistration", is(sqlDate2)),
                                 hasProperty("oc", is("6346gf234")),
                                 hasProperty("vehicleCheckup", is(true)),
                                 hasProperty("vehicleMileage", is(200000)),

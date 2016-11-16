@@ -30,6 +30,7 @@ public class JpaConfigForTest {
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
 
+
     @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
