@@ -22,7 +22,7 @@ public class CarPart extends AbstractEntity {
     @Range(min =0, max = 999999)
     private BigDecimal cost;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "repairId", nullable = false)
     private Repair repair;
 }

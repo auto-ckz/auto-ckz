@@ -25,7 +25,7 @@ public class RepairHistory extends AbstractEntity{
     @Range(min =0, max = 999999)
     private BigDecimal cost;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carId", nullable = false)
     private Car car;
 

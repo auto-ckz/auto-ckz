@@ -15,9 +15,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
@@ -44,16 +42,8 @@ public class RepairTest {
     }
 
     @Test
-    public void findByMechanicId_ShouldReturnOneRepairEntry() throws ParseException {
+    public void findByMechanicId_ShouldReturnOneRepairEntry(){
         List<Repair> repairEntries = repository.findByMechanicId(1L);
-
-        String date_s = "2016-03-19";
-        String date_s1 = "2006-03-23";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        Date date1 = dt.parse(date_s1);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-        java.sql.Date sqlDate1 =  new java.sql.Date(date1.getTime());
 
         assertThat(repairEntries.get(0), allOf(
                 hasProperty("id", is(1L)),
@@ -61,7 +51,7 @@ public class RepairTest {
                 hasProperty("status", is(RepairStatus.IN_PROGRESS)),
                 hasProperty("repairOrder", allOf(
                         hasProperty("id", is(1L)),
-                        hasProperty("date", is(sqlDate)),
+                        hasProperty("date", is(Date.valueOf("2016-03-19"))),
                         hasProperty("totalCost", is(notNullValue())),
                         hasProperty("car", allOf(
                                 hasProperty("make", is("Audi")),
@@ -69,7 +59,7 @@ public class RepairTest {
                                 hasProperty("year", is(2006)),
                                 hasProperty("registrationNumber", is("GA5424")),
                                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                                hasProperty("dateOfFirstRegistration", is(sqlDate1)),
+                                hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                                 hasProperty("oc", is("6346gf234")),
                                 hasProperty("vehicleCheckup", is(true)),
                                 hasProperty("vehicleMileage", is(200000)),
@@ -121,16 +111,8 @@ public class RepairTest {
     }
 
     @Test
-    public void findByRepairOrderIdAndMechanicId_ShouldReturnOneRepairEntry() throws ParseException {
+    public void findByRepairOrderIdAndMechanicId_ShouldReturnOneRepairEntry(){
         List<Repair> repairEntries = repository.findByRepairOrderIdAndMechanicId(1L, 2L);
-
-        String date_s = "2016-03-19";
-        String date_s1 = "2006-03-23";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        Date date1 = dt.parse(date_s1);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-        java.sql.Date sqlDate1 =  new java.sql.Date(date1.getTime());
 
         assertThat(repairEntries.get(0), allOf(
                 hasProperty("id", is(2L)),
@@ -138,7 +120,7 @@ public class RepairTest {
                 hasProperty("status", is(RepairStatus.DONE)),
                 hasProperty("repairOrder", allOf(
                         hasProperty("id", is(1L)),
-                        hasProperty("date", is(sqlDate)),
+                        hasProperty("date", is(Date.valueOf("2016-03-19"))),
                         hasProperty("totalCost", is(notNullValue())),
                         hasProperty("car", allOf(
                                 hasProperty("make", is("Audi")),
@@ -146,7 +128,7 @@ public class RepairTest {
                                 hasProperty("year", is(2006)),
                                 hasProperty("registrationNumber", is("GA5424")),
                                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                                hasProperty("dateOfFirstRegistration", is(sqlDate1)),
+                                hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                                 hasProperty("oc", is("6346gf234")),
                                 hasProperty("vehicleCheckup", is(true)),
                                 hasProperty("vehicleMileage", is(200000)),
@@ -197,16 +179,8 @@ public class RepairTest {
     }
 
     @Test
-    public void twofindByRepairOrderIdShouldReturnAListOfTwoEntries() throws ParseException {
+    public void twofindByRepairOrderIdShouldReturnAListOfTwoEntries() {
         List<Repair> repairEntries = repository.findByRepairOrderId(1L);
-
-        String date_s = "2016-03-19";
-        String date_s1 = "2006-03-23";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        Date date1 = dt.parse(date_s1);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-        java.sql.Date sqlDate1 =  new java.sql.Date(date1.getTime());
 
         assertThat(repairEntries.size(), is(2));
         assertThat(repairEntries, contains(
@@ -216,7 +190,7 @@ public class RepairTest {
                         hasProperty("status", is(RepairStatus.IN_PROGRESS)),
                         hasProperty("repairOrder", allOf(
                                 hasProperty("id", is(1L)),
-                                hasProperty("date", is(sqlDate)),
+                                hasProperty("date", is(Date.valueOf("2016-03-19"))),
                                 hasProperty("totalCost", is(notNullValue())),
                                 hasProperty("car", allOf(
                                         hasProperty("make", is("Audi")),
@@ -224,7 +198,7 @@ public class RepairTest {
                                         hasProperty("year", is(2006)),
                                         hasProperty("registrationNumber", is("GA5424")),
                                         hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                                        hasProperty("dateOfFirstRegistration", is(sqlDate1)),
+                                        hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                                         hasProperty("oc", is("6346gf234")),
                                         hasProperty("vehicleCheckup", is(true)),
                                         hasProperty("vehicleMileage", is(200000)),
@@ -278,7 +252,7 @@ public class RepairTest {
                         hasProperty("status", is(RepairStatus.DONE)),
                         hasProperty("repairOrder", allOf(
                                 hasProperty("id", is(1L)),
-                                hasProperty("date", is(sqlDate)),
+                                hasProperty("date", is(Date.valueOf("2016-03-19"))),
                                 hasProperty("totalCost", is(notNullValue())),
                                 hasProperty("car", allOf(
                                         hasProperty("make", is("Audi")),
@@ -286,7 +260,7 @@ public class RepairTest {
                                         hasProperty("year", is(2006)),
                                         hasProperty("registrationNumber", is("GA5424")),
                                         hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                                        hasProperty("dateOfFirstRegistration", is(sqlDate1)),
+                                        hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                                         hasProperty("oc", is("6346gf234")),
                                         hasProperty("vehicleCheckup", is(true)),
                                         hasProperty("vehicleMileage", is(200000)),
