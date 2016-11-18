@@ -14,9 +14,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
@@ -42,14 +40,9 @@ public class CarTest {
     }
 
     @Test
-    public void findByRegistrationNumber_ShouldReturnOneCarEntry() throws ParseException {
+    public void findByRegistrationNumber_ShouldReturnOneCarEntry() {
         Car carEntries = repository.findByRegistrationNumber("GA5424");
 
-        String date_s = "2006-03-23";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-
         assertThat(carEntries, allOf(
                 hasProperty("id", is(1L)),
                 hasProperty("make", is("Audi")),
@@ -57,7 +50,7 @@ public class CarTest {
                 hasProperty("year", is(2006)),
                 hasProperty("registrationNumber", is("GA5424")),
                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                hasProperty("dateOfFirstRegistration", is(sqlDate)),
+                hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                 hasProperty("oc", is("6346gf234")),
                 hasProperty("vehicleCheckup", is(true)),
                 hasProperty("vehicleMileage", is(200000)),
@@ -68,14 +61,9 @@ public class CarTest {
     }
 
     @Test
-    public void findByVin_ShouldReturnOneCarEntry() throws ParseException {
+    public void findByVin_ShouldReturnOneCarEntry() {
         Car carEntries = repository.findByVin("HF3JF4JVJ36JVJEKD");
 
-        String date_s = "2006-03-23";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-
         assertThat(carEntries, allOf(
                 hasProperty("id", is(1L)),
                 hasProperty("make", is("Audi")),
@@ -83,7 +71,7 @@ public class CarTest {
                 hasProperty("year", is(2006)),
                 hasProperty("registrationNumber", is("GA5424")),
                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                hasProperty("dateOfFirstRegistration", is(sqlDate)),
+                hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                 hasProperty("oc", is("6346gf234")),
                 hasProperty("vehicleCheckup", is(true)),
                 hasProperty("vehicleMileage", is(200000)),
@@ -94,14 +82,9 @@ public class CarTest {
     }
 
     @Test
-    public void findByOc_ShouldReturnOneCarEntry() throws ParseException {
+    public void findByOc_ShouldReturnOneCarEntry() {
         Car carEntries = repository.findByOc("6346gf234");
 
-        String date_s = "2006-03-23";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-
         assertThat(carEntries, allOf(
                 hasProperty("id", is(1L)),
                 hasProperty("make", is("Audi")),
@@ -109,7 +92,7 @@ public class CarTest {
                 hasProperty("year", is(2006)),
                 hasProperty("registrationNumber", is("GA5424")),
                 hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                hasProperty("dateOfFirstRegistration", is(sqlDate)),
+                hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                 hasProperty("oc", is("6346gf234")),
                 hasProperty("vehicleCheckup", is(true)),
                 hasProperty("vehicleMileage", is(200000)),
@@ -120,16 +103,8 @@ public class CarTest {
     }
 
     @Test
-    public void twoFindByMake_ShouldReturnAListOfTwoEntries() throws ParseException {
+    public void twoFindByMake_ShouldReturnAListOfTwoEntries() {
         List<Car> carEntries = repository.findByMake("Audi");
-
-        String date_s = "2006-03-23";
-        String date_s1 = "2014-02-11";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dt.parse(date_s);
-        Date date1 = dt.parse(date_s1);
-        java.sql.Date sqlDate =  new java.sql.Date(date.getTime());
-        java.sql.Date sqlDate1 =  new java.sql.Date(date1.getTime());
 
         assertThat(carEntries.size(), is(2));
         assertThat(carEntries, contains(
@@ -140,7 +115,7 @@ public class CarTest {
                         hasProperty("year", is(2006)),
                         hasProperty("registrationNumber", is("GA5424")),
                         hasProperty("vin", is("HF3JF4JVJ36JVJEKD")),
-                        hasProperty("dateOfFirstRegistration", is(sqlDate)),
+                        hasProperty("dateOfFirstRegistration", is(Date.valueOf("2006-03-23"))),
                         hasProperty("oc", is("6346gf234")),
                         hasProperty("vehicleCheckup", is(true)),
                         hasProperty("vehicleMileage", is(200000)),
@@ -155,7 +130,7 @@ public class CarTest {
                         hasProperty("year", is(2014)),
                         hasProperty("registrationNumber", is("GDA324")),
                         hasProperty("vin", is("GF834934F98HFIHF9")),
-                        hasProperty("dateOfFirstRegistration", is(sqlDate1)),
+                        hasProperty("dateOfFirstRegistration", is(Date.valueOf("2014-02-11"))),
                         hasProperty("oc", is("543uh2i43")),
                         hasProperty("vehicleCheckup", is(true)),
                         hasProperty("vehicleMileage", is(123431)),
