@@ -58,8 +58,9 @@ public class JpaConfigForTest {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
-        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
-        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
+        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, "org.hibernate.dialect.PostgreSQL9Dialect");
+        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, "create");
+        //jpaProperties.put(org.hibernate.cfg.Environment.DEFAULT_SCHEMA, "test");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
