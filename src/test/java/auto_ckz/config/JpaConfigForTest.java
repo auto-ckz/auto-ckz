@@ -25,10 +25,6 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackageClasses = Application.class)
 
 public class JpaConfigForTest {
-    @Value("${hibernate.dialect}")
-    private String dialect;
-    @Value("${hibernate.hbm2ddl.auto}")
-    private String hbm2ddlAuto;
 
 
     @Bean
