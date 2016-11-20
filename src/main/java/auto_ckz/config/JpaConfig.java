@@ -22,7 +22,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = Application.class)
-class JpaConfig {
+public class JpaConfig {
 
     @Value("${dataSource.driverClassName}")
     private String driver;
