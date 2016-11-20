@@ -1,4 +1,4 @@
- package auto_ckz.domain.abstracts;
+package auto_ckz.domain.abstracts;
 
 import auto_ckz.domain.address.Address;
 import auto_ckz.site.account.Account;
