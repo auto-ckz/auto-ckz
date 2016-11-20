@@ -10,8 +10,8 @@
     <address id="6" city="Katowice" houseNumber="8" street="Rycha" zipCode="91245" />
     <address id="7" city="Bydgoszcz" houseNumber="12" street="Karola" zipCode="82542" />
     <address id="8" city="Kartuzy" houseNumber="2" street="Polna" zipCode="85432" />
-    <client id="1" firstName="Marek" lastName="Nowak" phoneNumber="94332454343" pesel="95021232434" email="maN@wp.pl" address_id="1" />
-    <client id="2" firstName="Marek" lastName="Nowak" phoneNumber="84322345223" pesel="92013143254" email="wiK@wp.pl" address_id="2" />
+    <client id="1" firstName="Marek" lastName="Nowak" phoneNumber="94332454343" pesel="95021232434" address_id="1" />
+    <client id="2" firstName="Marek" lastName="Nowak" phoneNumber="84322345223" pesel="92013143254" address_id="2" />
     <director id="1" firstName="Karol" lastName="Kowal" phoneNumber="64354354353" pesel="86354534545" address_id="3" />
     <director id="2" firstName="Karol" lastName="Kowal" phoneNumber="32534634656" pesel="74532636455" address_id="4" />
     <mechanic id="1" firstName="David" lastName="Kos" phoneNumber="94235435454" pesel="93245435435" address_id="5" />

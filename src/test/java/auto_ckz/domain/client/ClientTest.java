@@ -51,7 +51,6 @@ public class ClientTest {
                 hasProperty("lastName", is("Nowak")),
                 hasProperty("phoneNumber", is("94332454343")),
                 hasProperty("pesel", is("95021232434")),
-                hasProperty("email", is("maN@wp.pl")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Ikara")),
                         hasProperty("city", is("Gdynia")),
@@ -70,7 +69,6 @@ public class ClientTest {
                 hasProperty("lastName", is("Nowak")),
                 hasProperty("phoneNumber", is("84322345223")),
                 hasProperty("pesel", is("92013143254")),
-                hasProperty("email", is("wiK@wp.pl")),
                 hasProperty("address", allOf(
                         hasProperty("street", is("Maja")),
                         hasProperty("city", is("Sopot")),
@@ -90,7 +88,6 @@ public class ClientTest {
                             hasProperty("lastName", is("Nowak")),
                             hasProperty("phoneNumber", is("94332454343")),
                             hasProperty("pesel", is("95021232434")),
-                            hasProperty("email", is("maN@wp.pl")),
                             hasProperty("address", allOf(
                                     hasProperty("street", is("Ikara")),
                                     hasProperty("city", is("Gdynia")),
@@ -104,7 +101,6 @@ public class ClientTest {
                             hasProperty("lastName", is("Nowak")),
                             hasProperty("phoneNumber", is("84322345223")),
                             hasProperty("pesel", is("92013143254")),
-                            hasProperty("email", is("wiK@wp.pl")),
                             hasProperty("address", allOf(
                                     hasProperty("street", is("Maja")),
                                     hasProperty("city", is("Sopot")),
