@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Dodaj klienta</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script src="../../../resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h3>Dodaj klienta:</h3>
+    <form id="addClientForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addClient();">
+        <div class="form-group">
+            <label for="firstName">Imię:</label>
+            <input id="firstName" type="text" th:field="*{firstName}" />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Nazwisko:</label>
+            <input id="lastName" type="text" th:field="*{lastName}" />
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Nr telefonu:</label>
+            <input id="phoneNumber" type="text" th:field="*{phoneNumber}" />
+        </div>
+        <div class="form-group">
+            <label for="pesel">Pesel:</label>
+            <input id="pesel" type="text" th:field="*{pesel}" />
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <a class="btn btn-warning" href="/admin/clients">Anuluj</a>
+    </form>
+</div>
+</body>
+</html>
