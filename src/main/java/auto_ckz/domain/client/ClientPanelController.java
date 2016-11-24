@@ -1,13 +1,17 @@
 package auto_ckz.domain.client;
 
 import com.google.common.collect.Lists;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.MessageFormat;
 
 @Controller
@@ -31,12 +35,10 @@ public class ClientPanelController {
 	}
 
 	@RequestMapping(value= "/{id}", method = RequestMethod.GET)
-	public String detailsClient(@PathVariable long id, Model model) {
+	public String detailsClient(@PathVariable long id, Model model) throws NotFoundException {
 		Client client = repository.findOne(id);
 		if(client == null) {
-			String message = MessageFormat.format("Can't find client with given id: {0}", id );
-			model.addAttribute("errorMessage", message);
-			return "error/general";
+			throw new NotFoundException("Can't find client with given id: " + id);
 		}
 
 		model.addAttribute("client", client);
@@ -44,12 +46,10 @@ public class ClientPanelController {
 	}
 
 	@RequestMapping(value= "/{id}/edit", method = RequestMethod.GET)
-	public String editClient(@PathVariable long id, Model model) {
+	public String editClient(@PathVariable long id, Model model) throws NotFoundException {
 		Client client = repository.findOne(id);
 		if(client == null) {
-			String message = MessageFormat.format("Can't find client with given id: {0}", id );
-			model.addAttribute("errorMessage", message);
-			return "error/general";
+			throw new NotFoundException("Can't find client with given id: " + id);
 		}
 
 		model.addAttribute("client", client);
@@ -57,16 +57,25 @@ public class ClientPanelController {
 	}
 
 	@RequestMapping(value= "/{id}/delete", method = RequestMethod.GET)
-	public String deleteClient(@PathVariable long id, Model model) {
+	public String deleteClient(@PathVariable long id, Model model) throws NotFoundException {
 		Client client = repository.findOne(id);
 		if(client == null) {
-			String message = MessageFormat.format("Can't find client with given id: {0}", id );
-			model.addAttribute("errorMessage", message);
-			return "error/general";
+			throw new NotFoundException("Can't find client with given id: " + id);
 		}
 
 		model.addAttribute("client", client);
 		return "admin/clients/delete";
+	}
+
+
+	@ExceptionHandler(NotFoundException.class)
+	public ModelAndView handleNotFoundException(final NotFoundException ex,
+												final HttpServletRequest request) {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("errorMessage", ex.getMessage());
+		modelAndView.setViewName("error/general");
+		return modelAndView;
 	}
 
 }

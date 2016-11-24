@@ -5,16 +5,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/resources/js/jquery-latest.js"></script>
     <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
-    <script src="/resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+    <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
     <div class="container">
         <div class="jumbotron text-center jumbo-form">
             <h3>Dodaj klienta:</h3>
-            <form id="addClientForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addOrEditClient();">
+            <form id="addClientForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addClient();">
                 <div class="form-group">
                     <label for="firstName">Imię:</label>
                     <input class="form-control" id="firstName" type="text" th:field="*{firstName}" />

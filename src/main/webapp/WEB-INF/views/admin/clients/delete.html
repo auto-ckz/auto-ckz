@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/resources/js/jquery-latest.js"></script>
     <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
-    <script src="/resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+    <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
@@ -39,6 +39,7 @@
         </table>
         <div class="form-group">
             <button type="submit" class="btn btn-danger" onclick="return deleteClient();">Usuń</button>
+            <a class="btn btn-warning" href="/admin/clients">Anuluj</a>
         </div>
     </div>
 </div>

@@ -5,14 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/resources/js/jquery-latest.js"></script>
     <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
-    <script src="/resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+    <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
 </head>
 <body>
     <div th:replace="fragments/header :: header">&nbsp;</div>
     <div class="container">
-        <div class="jumbotron text-center" th:object="${client}">
+        <div class="jumbotron text-center jumbo-form" th:object="${client}">
             <h3>Klient</h3>
             <table class="table table-bordered">
                 <tr>
@@ -40,6 +40,7 @@
             <div class="form-group">
                 <a class="btn btn-danger" th:href="@{/admin/clients/{id}/delete(id=${client.id})}">Usuń</a>
                 <a class="btn btn-success" th:href="@{/admin/clients/{id}/edit(id=${client.id})}">Edytuj</a>
+                <a class="btn btn-warning" th:href="@{/admin/clients}">Anuluj</a>
             </div>
         </div>
     </div>
