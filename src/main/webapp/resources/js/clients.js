@@ -9,25 +9,46 @@ function getFormData($form){
     return indexed_array;
 }
 
-function addClient(){
-    var client = getFormData($("#addClientForm"));
+function callAjax(url, type, data, success){
     $.ajax({
-        url: '/rest/clients/',
-        type : "POST",
+        url: url,
+        type : type,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         dataType : 'json',
-        data : JSON.stringify(client),
-        success : function(result) {
-            console.log(result);
-            window.location.href = '/admin/clients/all';
-        },
+        data : JSON.stringify(data),
+        success : success,
         error: function(xhr, resp, text) {
             console.log(xhr, resp, text);
         }
     });
+};
+function addOrEditClient(){
+    var client = getFormData($("#addClientForm"));
+    callAjax('/rest/clients/', 'POST', client, function(result){
+        console.log(result);
+        window.location.href = '/admin/clients';
+    });
 
     return false;
-}
+};
+function editClient(){
+    var client = getFormData($("#addClientForm"));
+    callAjax('/rest/clients/', 'PUT', client, function(result){
+        console.log(result);
+        window.location.href = '/admin/clients';
+    });
+    return false;
+};
+
+function deleteClient(){
+    var clientId = $('#clientId').text();
+    console.log(clientId);
+    callAjax('/rest/clients/', 'Delete', clientId, function(result){
+        console.log(result);
+        window.location.href = '/admin/clients';
+    });
+    return false;
+};

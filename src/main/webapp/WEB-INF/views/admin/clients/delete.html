@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Usuń klienta</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script src="/resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center jumbo-form" th:object="${client}">
+        <h3>Czy na pewno chcesz usunąć tego klienta?</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td>id: </td>
+                <td id="clientId" th:text="${client.id}"></td>
+            </tr>
+            <tr>
+                <td>imie: </td>
+                <td th:text="${client.firstName}"></td>
+            </tr>
+            <tr>
+                <td>nazwisko: </td>
+                <td th:text="${client.lastName}"></td>
+            </tr>
+            <tr>
+                <td>pesel: </td>
+                <td th:text="${client.pesel}"></td>
+            </tr>
+            <tr>
+                <td>numer telefonu: </td>
+                <td th:text="${client.phoneNumber}"></td>
+            </tr>
+
+        </table>
+        <div class="form-group">
+            <button type="submit" class="btn btn-danger" onclick="return deleteClient();">Usuń</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

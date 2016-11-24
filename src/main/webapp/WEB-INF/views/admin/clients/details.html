@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Dodaj klienta</title>
+    <title th:text="#{view.index.title}">Sczegoly klienta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
-    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
-    <script src="../../../resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+    <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script src="/resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
 </head>
 <body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
-<div class="container">
-    <h3>Klient</h3>
-    <form id="addClientForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addClient();">
-        <div class="form-group">
-            <label for="firstName">Imię:</label>
-            <input id="firstName" type="text" th:field="*{firstName}" disabled />
+    <div th:replace="fragments/header :: header">&nbsp;</div>
+    <div class="container">
+        <div class="jumbotron text-center" th:object="${client}">
+            <h3>Klient</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <td>id: </td>
+                    <td th:text="${client.id}"></td>
+                </tr>
+                <tr>
+                    <td>imie: </td>
+                    <td th:text="${client.firstName}"></td>
+                </tr>
+                <tr>
+                    <td>nazwisko: </td>
+                    <td th:text="${client.lastName}"></td>
+                </tr>
+                <tr>
+                    <td>pesel: </td>
+                    <td th:text="${client.pesel}"></td>
+                </tr>
+                <tr>
+                    <td>numer telefonu: </td>
+                    <td th:text="${client.phoneNumber}"></td>
+                </tr>
+
+            </table>
+            <div class="form-group">
+                <a class="btn btn-danger" th:href="@{/admin/clients/{id}/delete(id=${client.id})}">Usuń</a>
+                <a class="btn btn-success" th:href="@{/admin/clients/{id}/edit(id=${client.id})}">Edytuj</a>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="lastName">Nazwisko:</label>
-            <input id="lastName" type="text" th:field="*{lastName}" disabled />
-        </div>
-        <div class="form-group">
-            <label for="phoneNumber">Nr telefonu:</label>
-            <input id="phoneNumber" type="text" th:field="*{phoneNumber}" disabled />
-        </div>
-        <div class="form-group">
-            <label for="pesel">Pesel:</label>
-            <input id="pesel" type="text" th:field="*{pesel}" disabled/>
-        </div>
-        <a class="btn btn-success" href="/admin/clients">Powrót</a>
-    </form>
-</div>
+    </div>
 </body>
 </html>

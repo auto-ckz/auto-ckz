@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Wszyscy klienci</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script src="/resources/js/clients.min.js" th:src="@{/resources/js/clients.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <div th:if="${clients.size() > 0}">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>id</th>
+                        <th>imię</th>
+                        <th>nazwisko</th>
+                        <th>pesel</th>
+                        <th>numer telefonu</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr th:each="client : ${clients}">
+                        <td th:text="${client.id}"></td>
+                        <td th:text="${client.firstName}"></td>
+                        <td th:text="${client.lastName}"></td>
+                        <td th:text="${client.pesel}"></td>
+                        <td th:text="${client.phoneNumber}"></td>
+                        <td>
+                            <a class="btn btn-danger" th:href="@{/admin/clients/{id}/delete(id=${client.id})}">Usuń</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success" th:href="@{/admin/clients/{id}/edit(id=${client.id})}">Edytuj</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div th:unless="${clients.size() > 0}">
+                <p class="text-center">No clients here.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
