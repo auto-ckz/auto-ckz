@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Sczegoly klienta</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
-    <link href="/resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
-    <script src="/resources/js/jquery-latest.js"></script>
-    <script src="/resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <title th:text="#{view.index.title}">Szczegóły klienta</title>
+    <meta th:replace="fragments/header :: head"/>
     <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
 </head>
 <body>
@@ -40,7 +36,7 @@
             <div class="form-group">
                 <a class="btn btn-danger" th:href="@{/admin/clients/{id}/delete(id=${client.id})}">Usuń</a>
                 <a class="btn btn-success" th:href="@{/admin/clients/{id}/edit(id=${client.id})}">Edytuj</a>
-                <a class="btn btn-warning" th:href="@{/admin/clients}">Anuluj</a>
+                <a class="btn btn-warning" th:href="@{/admin/clients}">Powrót</a>
             </div>
         </div>
     </div>
