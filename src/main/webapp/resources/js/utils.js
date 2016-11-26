@@ -10,7 +10,7 @@ function getFormData($form){
 }
 
 function callAjax(url, type, data, success){
-    $.ajax({
+    return $.ajax({
         url: url,
         type : type,
         headers: {

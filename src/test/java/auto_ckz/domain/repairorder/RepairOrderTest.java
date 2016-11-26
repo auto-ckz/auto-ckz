@@ -141,7 +141,7 @@ public class RepairOrderTest {
 
     @Test
     public void findByCarId_ShouldReturnOneRepairOrderEntry() {
-        RepairOrder repairOrderEntries = repository.findByCarId(2L);
+        List<RepairOrder> repairOrderEntries = repository.findByCarId(2L);
 
         assertThat(repairOrderEntries, allOf(
                 hasProperty("id", is(2L)),

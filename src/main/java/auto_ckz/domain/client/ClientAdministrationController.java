@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/clients")
-public class ClientPanelController {
+public class ClientAdministrationController {
 
 	@Autowired
 	private ClientRepository repository;
