@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Podsumowanie naprawy</title>
+    <meta th:replace="fragments/header :: head"/>
+    <!--<script src="/resources/js/client.js" th:src="@{/resources/js/client.js}"></script>-->
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h2 th:text="|Podsumowanie naprawy: ${repairOrder.description}|"></h2>
+        <h3 th:text="|${car.make} ${car.model} VIN: ${car.vin}|"></h3>
+        <div th:if="${repairs.size() > 0}">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Stan</th>
+                    <th>Opis</th>
+                    <th>Szczegóły</th>
+                </tr>
+                <tr th:each="repair : ${repairs}">
+                    <td th:switch="${repair.status.name()}">
+                        <span th:case="'NOT_STARTED'" class="label label-default">Nie rozpoczęto</span>
+                        <span th:case="'IN_PROGRESS'" class="label label-primary">W trakcie</span>
+                        <span th:case="'SUSPENDED'" class="label label-warning">Wstrzymano</span>
+                        <span th:case="'DONE'" class="label label-success">Zakończono</span>
+                        <span th:case="*" class="label label-danger">Nieznany</span>
+                    </td>
+
+                    <td th:text="${repair.description}"></td>
+
+                    <td>
+                        <a th:href="|/repairs/${repair.id}|" class="btn btn-default" disabled>
+                            <span class="glyphicon glyphicon-info-sign">
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div th:unless="${repairs.size() > 0}">
+            <p class="text-center">Nie dokonano żadnych napraw.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
