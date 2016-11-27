@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Pracownicy obsługi klienta: </title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h4 class="text-left">
+            <a class="btn btn-success" th:href="@{/admin/membersOfCustomerService/add}">Dodaj pracownika obsługi klienta</a>
+        </h4>
+        <div th:if="${membersOfCustomerService.size() > 0}">
+            <table class="table table-bordered">
+                <tr>
+                    <th>id</th>
+                    <th>imię</th>
+                    <th>nazwisko</th>
+                    <th>pesel</th>
+                    <th>numer telefonu</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="memberOfCustomerService : ${membersOfCustomerService}">
+                    <td th:text="${memberOfCustomerService.id}"></td>
+                    <td th:text="${memberOfCustomerService.firstName}"></td>
+                    <td th:text="${memberOfCustomerService.lastName}"></td>
+                    <td th:text="${memberOfCustomerService.pesel}"></td>
+                    <td th:text="${memberOfCustomerService.phoneNumber}"></td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{/admin/membersOfCustomerService/{id}/delete(id=${memberOfCustomerService.id})}">Usuń</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/admin/membersOfCustomerService/{id}/edit(id=${memberOfCustomerService.id})}">Edytuj</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{/admin/membersOfCustomerService/{id}(id=${memberOfCustomerService.id})}">Szczegóły</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div th:unless="${membersOfCustomerService.size() > 0}">
+            <p class="text-center">No members Of customer Service here.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

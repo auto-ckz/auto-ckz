@@ -3,11 +3,12 @@ package auto_ckz.domain.client;
 import auto_ckz.site.error.NotFoundException;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
@@ -19,7 +20,6 @@ public class ClientPanelController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String clients(Model model) {
-		// TODO: pagination
 		model.addAttribute("clients", Lists.newArrayList(repository.findAll()));
 		return "admin/clients/all";
 	}
@@ -36,7 +36,6 @@ public class ClientPanelController {
 		if(client == null) {
 			throw new NotFoundException("Can't find client with given id: " + id);
 		}
-
 		model.addAttribute("client", client);
 		return "admin/clients/details";
 	}
@@ -47,7 +46,6 @@ public class ClientPanelController {
 		if(client == null) {
 			throw new NotFoundException("Can't find client with given id: " + id);
 		}
-
 		model.addAttribute("client", client);
 		return "admin/clients/edit";
 	}
@@ -58,11 +56,9 @@ public class ClientPanelController {
 		if(client == null) {
 			throw new NotFoundException("Can't find client with given id: " + id);
 		}
-
 		model.addAttribute("client", client);
 		return "admin/clients/delete";
 	}
-
 
 	@ExceptionHandler(NotFoundException.class)
 	public String handleNotFoundException(final NotFoundException ex, Model model) {

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Szczegóły pracownika obsługi klienta</title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center jumbo-form" th:object="${memberOfCustomerService}">
+        <h3>pracownik obsługi klienta</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td>id: </td>
+                <td th:text="${memberOfCustomerService.id}"></td>
+            </tr>
+            <tr>
+                <td>imie: </td>
+                <td th:text="${memberOfCustomerService.firstName}"></td>
+            </tr>
+            <tr>
+                <td>nazwisko: </td>
+                <td th:text="${memberOfCustomerService.lastName}"></td>
+            </tr>
+            <tr>
+                <td>pesel: </td>
+                <td th:text="${memberOfCustomerService.pesel}"></td>
+            </tr>
+            <tr>
+                <td>numer telefonu: </td>
+                <td th:text="${memberOfCustomerService.phoneNumber}"></td>
+            </tr>
+
+        </table>
+        <div class="form-group">
+            <a class="btn btn-danger" th:href="@{/admin/membersOfCustomerService/{id}/delete(id=${memberOfCustomerService.id})}">Usuń</a>
+            <a class="btn btn-success" th:href="@{/admin/membersOfCustomerService/{id}/edit(id=${memberOfCustomerService.id})}">Edytuj</a>
+            <a class="btn btn-warning" th:href="@{/admin/membersOfCustomerService}">Powrót</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Mechanicy: </title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/mechanics.js" th:src="@{/resources/js/mechanics.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h4 class="text-left">
+            <a class="btn btn-success" th:href="@{/admin/mechanics/add}">Dodaj mechanika</a>
+        </h4>
+        <div th:if="${mechanics.size() > 0}">
+            <table class="table table-bordered">
+                <tr>
+                    <th>id</th>
+                    <th>imię</th>
+                    <th>nazwisko</th>
+                    <th>pesel</th>
+                    <th>numer telefonu</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="mechanic : ${mechanics}">
+                    <td th:text="${mechanic.id}"></td>
+                    <td th:text="${mechanic.firstName}"></td>
+                    <td th:text="${mechanic.lastName}"></td>
+                    <td th:text="${mechanic.pesel}"></td>
+                    <td th:text="${mechanic.phoneNumber}"></td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{/admin/mechanics/{id}/delete(id=${mechanic.id})}">Usuń</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/admin/mechanics/{id}/edit(id=${mechanic.id})}">Edytuj</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{/admin/mechanics/{id}(id=${mechanic.id})}">Szczegóły</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div th:unless="${mechanics.size() > 0}">
+            <p class="text-center">No mechanics here.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
