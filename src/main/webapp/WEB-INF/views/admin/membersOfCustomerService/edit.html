@@ -4,13 +4,14 @@
     <title th:text="#{view.index.title}">Edytuj pracownika obsługi klienta</title>
     <meta th:replace="fragments/header :: head"/>
     <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
+    <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center jumbo-form">
         <h3>Edytuj pracownika obsługi klienta:</h3>
-        <form id="editMemberOfCustomerServiceForm" class="form-horizontal" action="#" th:object="${memberOfCustomerService}" onsubmit="return editMemberOfCustomerService();">
+        <form id="editMemberOfCustomerServiceForm" name="addPersonForm" class="form-horizontal" action="#" th:object="${memberOfCustomerService}" onsubmit="return editMemberOfCustomerService();">
             <div class="form-group">
                 <label for="id">Id:</label>
                 <input class="form-control" id="id" type="text" th:field="*{id}" readonly/>

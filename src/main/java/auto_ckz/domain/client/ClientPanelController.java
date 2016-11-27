@@ -20,6 +20,7 @@ public class ClientPanelController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String clients(Model model) {
+		// TODO: pagination
 		model.addAttribute("clients", Lists.newArrayList(repository.findAll()));
 		return "admin/clients/all";
 	}
@@ -36,6 +37,7 @@ public class ClientPanelController {
 		if(client == null) {
 			throw new NotFoundException("Can't find client with given id: " + id);
 		}
+
 		model.addAttribute("client", client);
 		return "admin/clients/details";
 	}
@@ -46,6 +48,7 @@ public class ClientPanelController {
 		if(client == null) {
 			throw new NotFoundException("Can't find client with given id: " + id);
 		}
+
 		model.addAttribute("client", client);
 		return "admin/clients/edit";
 	}
@@ -56,9 +59,11 @@ public class ClientPanelController {
 		if(client == null) {
 			throw new NotFoundException("Can't find client with given id: " + id);
 		}
+
 		model.addAttribute("client", client);
 		return "admin/clients/delete";
 	}
+
 
 	@ExceptionHandler(NotFoundException.class)
 	public String handleNotFoundException(final NotFoundException ex, Model model) {

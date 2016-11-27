@@ -4,13 +4,14 @@
     <title th:text="#{view.index.title}">Dodaj klienta</title>
     <meta th:replace="fragments/header :: head"/>
     <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
+    <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
     <div class="container">
         <div class="jumbotron text-center jumbo-form">
             <h3>Dodaj klienta:</h3>
-            <form id="addClientForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addClient();">
+            <form id="addClientForm" name="addPersonForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addClient();">
                 <div class="form-group">
                     <label for="firstName">Imię:</label>
                     <input class="form-control" id="firstName" type="text" th:field="*{firstName}" />

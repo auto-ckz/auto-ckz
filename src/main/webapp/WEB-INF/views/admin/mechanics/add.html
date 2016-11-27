@@ -4,13 +4,14 @@
     <title th:text="#{view.index.title}">Dodaj mechanika</title>
     <meta th:replace="fragments/header :: head"/>
     <script src="/resources/js/mechanics.js" th:src="@{/resources/js/mechanics.js}"></script>
+    <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center jumbo-form">
         <h3>Dodaj mechanika:</h3>
-        <form id="addMechanicForm" class="form-horizontal" action="#" th:object="${mechanic}" onsubmit="return addMechanic();">
+        <form id="addMechanicForm" name="addPersonForm" class="form-horizontal" action="#" th:object="${mechanic}" onsubmit="return addMechanic();">
             <div class="form-group">
                 <label for="firstName">Imię:</label>
                 <input class="form-control" id="firstName" type="text" th:field="*{firstName}" />
