@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Dodaj klienta</title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+    <div class="container">
+        <div class="jumbotron text-center jumbo-form">
+            <h3>Dodaj klienta:</h3>
+            <form id="addClientForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return addClient();">
+                <div class="form-group">
+                    <label for="firstName">Imię:</label>
+                    <input class="form-control" id="firstName" type="text" th:field="*{firstName}" />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nazwisko:</label>
+                    <input class="form-control" id="lastName" type="text" th:field="*{lastName}" />
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Nr telefonu:</label>
+                    <input class="form-control" id="phoneNumber" type="text" th:field="*{phoneNumber}" />
+                </div>
+                <div class="form-group">
+                    <label for="pesel">Pesel:</label>
+                    <input class="form-control" id="pesel" type="text" th:field="*{pesel}" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Dodaj</button>
+                    <a class="btn btn-warning" href="/admin/clients">Anuluj</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
