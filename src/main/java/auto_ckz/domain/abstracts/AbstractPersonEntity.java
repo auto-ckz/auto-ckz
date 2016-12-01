@@ -13,15 +13,14 @@ import javax.persistence.*;
 public abstract class AbstractPersonEntity extends AbstractEntity {
 
     @NotEmpty
-    @Length(max = 30)
+    @Length(min = 2, max = 30)
     private String firstName;
     @NotEmpty
-    @Length(max = 30)
+    @Length(min = 2, max = 30)
     private String lastName;
     @NotEmpty
     @Length(max = 12)
     private String phoneNumber;
-    @NotEmpty
     @Length(min = 11, max = 11)
     @Column(unique = true)
     private String pesel;

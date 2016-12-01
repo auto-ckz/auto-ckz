@@ -2,7 +2,7 @@ function addMemberOfCustomerService(){
     var memberOfCustomerService = getFormData($("#addMemberOfCustomerServiceForm"));
     callAjax('/rest/memberOfCustomerServices/', 'POST', memberOfCustomerService, function(result){
         console.log(result);
-        window.location.href = '/admin/membersOfCustomerService';
+        window.location.href = '/admin/employees/customer_service';
     });
 
     return false;
@@ -15,7 +15,7 @@ function editMemberOfCustomerService(){
     }
     callAjax('/rest/memberOfCustomerServices/' + memberOfCustomerService.id , 'PUT', memberOfCustomerService, function(result){
         console.log(result);
-        window.location.href = '/admin/membersOfCustomerService';
+        window.location.href = '/admin/employees/customer_service';
     });
     return false;
 };
@@ -28,7 +28,7 @@ function deleteMemberOfCustomerService(){
     }
     callAjax('/rest/memberOfCustomerServices/' + memberOfCustomerServiceId , 'DELETE', memberOfCustomerServiceId, function(result){
         console.log(result);
-        window.location.href = '/admin/membersOfCustomerService';
+        window.location.href = '/admin/employees/customer_service';
     });
     return false;
 };

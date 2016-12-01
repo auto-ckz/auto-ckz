@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Usuń mechanika</title>
+    <title th:text="#{view.index.title}">Szczegóły mechanika</title>
     <meta th:replace="fragments/header :: head"/>
     <script src="/resources/js/mechanics.js" th:src="@{/resources/js/mechanics.js}"></script>
 </head>
@@ -9,11 +9,11 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center jumbo-form" th:object="${mechanic}">
-        <h3>Czy na pewno chcesz usunąć tego mechanika?</h3>
+        <h3>Mechanik</h3>
         <table class="table table-bordered">
             <tr>
                 <td>id: </td>
-                <td id="mechanicId" th:text="${mechanic.id}"></td>
+                <td th:text="${mechanic.id}"></td>
             </tr>
             <tr>
                 <td>imie: </td>
@@ -34,8 +34,9 @@
 
         </table>
         <div class="form-group">
-            <button type="submit" class="btn btn-danger" onclick="return deleteMechanic();">Usuń</button>
-            <a class="btn btn-warning" href="/admin/mechanics">Anuluj</a>
+            <a class="btn btn-danger" th:href="@{/admin/employees/mechanics/{id}/delete(id=${mechanic.id})}">Usuń</a>
+            <a class="btn btn-success" th:href="@{/admin/employees/mechanics/{id}/edit(id=${mechanic.id})}">Edytuj</a>
+            <a class="btn btn-warning" th:href="@{/admin/employees/mechanics}">Powrót</a>
         </div>
     </div>
 </div>

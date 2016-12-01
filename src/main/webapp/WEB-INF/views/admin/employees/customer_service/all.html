@@ -10,7 +10,7 @@
 <div class="container">
     <div class="jumbotron text-center">
         <h4 class="text-left">
-            <a class="btn btn-success" th:href="@{/admin/membersOfCustomerService/add}">Dodaj pracownika obsługi klienta</a>
+            <a class="btn btn-success" th:href="@{/admin/employees/customer_service/add}">Dodaj pracownika obsługi klienta</a>
         </h4>
         <div th:if="${membersOfCustomerService.size() > 0}">
             <table class="table table-bordered">
@@ -31,13 +31,13 @@
                     <td th:text="${memberOfCustomerService.pesel}"></td>
                     <td th:text="${memberOfCustomerService.phoneNumber}"></td>
                     <td>
-                        <a class="btn btn-danger" th:href="@{/admin/membersOfCustomerService/{id}/delete(id=${memberOfCustomerService.id})}">Usuń</a>
+                        <a class="btn btn-danger" th:href="@{/admin/employees/customer_service/{id}/delete(id=${memberOfCustomerService.id})}">Usuń</a>
                     </td>
                     <td>
-                        <a class="btn btn-success" th:href="@{/admin/membersOfCustomerService/{id}/edit(id=${memberOfCustomerService.id})}">Edytuj</a>
+                        <a class="btn btn-success" th:href="@{/admin/employees/customer_service/{id}/edit(id=${memberOfCustomerService.id})}">Edytuj</a>
                     </td>
                     <td>
-                        <a class="btn btn-warning" th:href="@{/admin/membersOfCustomerService/{id}(id=${memberOfCustomerService.id})}">Szczegóły</a>
+                        <a class="btn btn-warning" th:href="@{/admin/employees/customer_service/{id}(id=${memberOfCustomerService.id})}">Szczegóły</a>
                     </td>
                 </tr>
             </table>

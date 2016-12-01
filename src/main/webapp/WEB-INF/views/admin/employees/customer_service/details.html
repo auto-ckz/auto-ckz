@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Usuń pracownika obsługi klienta</title>
+    <title th:text="#{view.index.title}">Szczegóły pracownika obsługi klienta</title>
     <meta th:replace="fragments/header :: head"/>
     <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
 </head>
@@ -9,11 +9,11 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center jumbo-form" th:object="${memberOfCustomerService}">
-        <h3>Czy na pewno chcesz usunąć tego mechanika?</h3>
+        <h3>pracownik obsługi klienta</h3>
         <table class="table table-bordered">
             <tr>
                 <td>id: </td>
-                <td id="memberOfCustomerServiceId" th:text="${memberOfCustomerService.id}"></td>
+                <td th:text="${memberOfCustomerService.id}"></td>
             </tr>
             <tr>
                 <td>imie: </td>
@@ -34,8 +34,9 @@
 
         </table>
         <div class="form-group">
-            <button type="submit" class="btn btn-danger" onclick="return deleteMemberOfCustomerService();">Usuń</button>
-            <a class="btn btn-warning" href="/admin/membersOfCustomerService">Anuluj</a>
+            <a class="btn btn-danger" th:href="@{/admin/employees/customer_service/{id}/delete(id=${memberOfCustomerService.id})}">Usuń</a>
+            <a class="btn btn-success" th:href="@{/admin/employees/customer_service/{id}/edit(id=${memberOfCustomerService.id})}">Edytuj</a>
+            <a class="btn btn-warning" th:href="@{/admin/employees/customer_service}">Powrót</a>
         </div>
     </div>
 </div>

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Edytuj klienta</title>
+    <title th:text="#{view.index.title}">Edytuj pracownika obsługi klienta</title>
     <meta th:replace="fragments/header :: head"/>
-    <script src="/resources/js/clients.js" th:src="@{/resources/js/clients.js}"></script>
+    <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
     <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center jumbo-form">
-        <h3>Edytuj klienta:</h3>
-        <form id="editClientForm" name="addPersonForm" class="form-horizontal" action="#" th:object="${client}" onsubmit="return editClient();">
+        <h3>Edytuj pracownika obsługi klienta:</h3>
+        <form id="editMemberOfCustomerServiceForm" name="addPersonForm" class="form-horizontal" action="#" th:object="${memberOfCustomerService}" onsubmit="return editMemberOfCustomerService();">
             <meta th:replace="fragments/person_edit_form :: personEditForm"/>
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Edytuj</button>
-                <a class="btn btn-warning" href="/admin/clients">Anuluj</a>
+                <a class="btn btn-warning" href="/admin/employees/customer_service">Anuluj</a>
             </div>
         </form>
     </div>

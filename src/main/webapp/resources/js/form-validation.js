@@ -33,12 +33,14 @@ $(function() {
         rules: {
             firstName: {
                 required: true,
-                maxlength: 50,
+                minlength: 2,
+                maxlength: 30,
                 lettersonly: true
             },
             lastName: {
                 required: true,
-                maxlength: 50,
+                minlength: 2,
+                maxlength: 30,
                 lettersonly: true
             },
             phoneNumber: {

@@ -2,7 +2,7 @@ function addMechanic(){
     var mechanic = getFormData($("#addMechanicForm"));
     callAjax('/rest/mechanics/', 'POST', mechanic, function(result){
         console.log(result);
-        window.location.href = '/admin/mechanics';
+        window.location.href = '/admin/employees/mechanics';
     });
 
     return false;
@@ -15,7 +15,7 @@ function editMechanic(){
     }
     callAjax('/rest/mechanics/' + mechanic.id , 'PUT', mechanic, function(result){
         console.log(result);
-        window.location.href = '/admin/mechanics';
+        window.location.href = '/admin/employees/mechanics';
     });
     return false;
 };
@@ -28,7 +28,7 @@ function deleteMechanic(){
     }
     callAjax('/rest/mechanics/' + mechanicId , 'DELETE', mechanicId, function(result){
         console.log(result);
-        window.location.href = '/admin/mechanics';
+        window.location.href = '/admin/employees/mechanics';
     });
     return false;
 };

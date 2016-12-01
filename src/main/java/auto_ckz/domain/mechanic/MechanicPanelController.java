@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin/mechanics")
+@RequestMapping("/admin/employees/mechanics")
 public class MechanicPanelController {
 
     @Autowired
@@ -21,44 +21,43 @@ public class MechanicPanelController {
     @RequestMapping(method = RequestMethod.GET)
 	public String mechanics(Model model) {
         model.addAttribute("mechanics", Lists.newArrayList(mechanicRepository.findAll()));
-        return "admin/mechanics/all";
+        return "admin/employees/mechanics/all";
     }
 
     @RequestMapping(value= "add", method = RequestMethod.GET)
 	public String addMechanic(Model model) {
         model.addAttribute("mechanic", new Mechanic());
-        return "admin/mechanics/add";
+        return "admin/employees/mechanics/add";
     }
 
     @RequestMapping(value= "/{id}", method = RequestMethod.GET)
 	public String detailsMechanic(@PathVariable long id, Model model) {
         Mechanic mechanic = mechanicRepository.findOne(id);
         if(mechanic == null) {
-            throw new NotFoundException("Can't find mechanic with given id: {0}" + id);
+            throw new NotFoundException("Can't find mechanic with given id: " + id);
         }
         model.addAttribute("mechanic", mechanic);
-        return "admin/mechanics/details";
+        return "admin/employees/mechanics/details";
     }
 
     @RequestMapping(value= "/{id}/edit", method = RequestMethod.GET)
 	public String editMechanic(@PathVariable long id, Model model) {
-        model.addAttribute("mechanic", mechanicRepository.findOne(id));
         Mechanic mechanic = mechanicRepository.findOne(id);
         if(mechanic == null) {
-            throw new NotFoundException("Can't find mechanic with given id: {0}" + id);
+            throw new NotFoundException("Can't find mechanic with given id: " + id);
         }
         model.addAttribute("mechanic", mechanic);
-        return "admin/mechanics/edit";
+        return "admin/employees/mechanics/edit";
     }
 
     @RequestMapping(value= "/{id}/delete", method = RequestMethod.GET)
 	public String deleteMechanic(@PathVariable long id, Model model) {
         Mechanic mechanic = mechanicRepository.findOne(id);
         if(mechanic == null) {
-            throw new NotFoundException("Can't find mechanic with given id: {0}" + id);
+            throw new NotFoundException("Can't find mechanic with given id: " + id);
         }
         model.addAttribute("mechanic", mechanic);
-        return "admin/mechanics/delete";
+        return "admin/employees/mechanics/delete";
     }
 
     @ExceptionHandler(NotFoundException.class)
