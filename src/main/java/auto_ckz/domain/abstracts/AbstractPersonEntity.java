@@ -4,6 +4,7 @@ import auto_ckz.domain.address.Address;
 import auto_ckz.site.account.Account;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 
@@ -11,10 +12,13 @@ import javax.persistence.*;
 @Data
 public abstract class AbstractPersonEntity extends AbstractEntity {
 
-    @Length(max = 50)
+    @NotEmpty
+    @Length(min = 2, max = 30)
     private String firstName;
-    @Length(max = 50)
+    @NotEmpty
+    @Length(min = 2, max = 30)
     private String lastName;
+    @NotEmpty
     @Length(max = 12)
     private String phoneNumber;
     @Length(min = 11, max = 11)

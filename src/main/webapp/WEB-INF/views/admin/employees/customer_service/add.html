@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Dodaj pracownika obsługi klienta</title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
+    <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center jumbo-form">
+        <h3>Dodaj pracownika obsługi klienta:</h3>
+        <form id="addMemberOfCustomerServiceForm" name="addPersonForm" class="form-horizontal" action="#" th:object="${memberOfCustomerService}" onsubmit="return addMemberOfCustomerService();">
+            <meta th:replace="fragments/person_add_form :: personAddForm"/>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Dodaj</button>
+                <a class="btn btn-warning" href="/admin/employees/customer_service">Anuluj</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
