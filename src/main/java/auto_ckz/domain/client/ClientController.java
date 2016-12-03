@@ -1,17 +1,13 @@
 package auto_ckz.domain.client;
 
 import auto_ckz.domain.car.Car;
-import auto_ckz.domain.car.CarRepository;
 import auto_ckz.site.error.NotFoundException;
-import auto_ckz.site.error.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 
@@ -20,30 +16,39 @@ import java.util.List;
 public class ClientController {
 
 	@Autowired
-	private ClientRepository clientRepository;
+	private ClientRepository repository;
 
 	@Autowired
-	private CarRepository carRepository;
+	private ClientService clientService;
 
-	@Autowired
-	private ClientSecurityService securityService;
-
+	//TODO: check if User accessing this page is the actual Client
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String clientOverview(@PathVariable long id, Model model, Principal principal) {
-		Client client = clientRepository.findOne(id);
+	public String clientOverview(@PathVariable long id, Model model) {
+		Client client = repository.findOne(id);
 		if(client == null) {
-			throw new NotFoundException("Nie można znaleść klienta z id: " + id);
+			throw new NotFoundException("Can't find client with given id: " + id);
 		}
 
-		if(!securityService.isAccountAuthorized(client, principal)){
-			throw new UnauthorizedException("Nie posiadasz uprawnień do tego zasobu.");
-		}
+		List<Car> clientCars = clientService.getClientCars(id);
 
-		List<Car> clientCars = carRepository.findByClientId(id);
+		//TODO: remove test car
+		Car testCar = new Car();
+		testCar.setId(1L);
+		testCar.setMake("Polonez");
+		testCar.setModel("Caro");
+		testCar.setVin("1234567890123456789");
+		clientCars.add(testCar);
 
 		model.addAttribute("client", client);
 		model.addAttribute("cars", clientCars);
 		return "clients/overview";
+	}
+
+	//TODO: move exception handler to superclass
+	@ExceptionHandler(NotFoundException.class)
+	public String handleNotFoundException(final NotFoundException ex, Model model) {
+		model.addAttribute("errorMessage", ex.getMessage());
+		return "error/general";
 	}
 
 }
