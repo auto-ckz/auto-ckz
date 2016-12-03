@@ -12,8 +12,8 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/client")
-public class ClientOverviewPanelController {
+@RequestMapping("/clients")
+public class ClientController {
 
 	@Autowired
 	private ClientRepository repository;
@@ -33,6 +33,7 @@ public class ClientOverviewPanelController {
 
 		//TODO: remove test car
 		Car testCar = new Car();
+		testCar.setId(1L);
 		testCar.setMake("Polonez");
 		testCar.setModel("Caro");
 		testCar.setVin("1234567890123456789");
@@ -40,7 +41,7 @@ public class ClientOverviewPanelController {
 
 		model.addAttribute("client", client);
 		model.addAttribute("cars", clientCars);
-		return "client/overview";
+		return "clients/overview";
 	}
 
 	//TODO: move exception handler to superclass

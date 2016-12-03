@@ -14,6 +14,6 @@ public interface RepairOrderRepository extends PagingAndSortingRepository<Repair
     List<RepairOrder> findByClientIdAndCarId(@Param("clientId") Long clientId,
                                              @Param("carId") Long carId);
     List<RepairOrder> findByMemberOfCustomerServiceId(@Param("memberOfCustomerServiceId") Long memberOfCustomerServiceId);
-    RepairOrder findByCarId(@Param("carId") Long carId);
+    List<RepairOrder> findByCarId(@Param("carId") Long carId);
     List<RepairOrder> findByDate(@Param("date") Date date);
 }

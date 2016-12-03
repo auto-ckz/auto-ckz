@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Panel klienta</title>
+    <meta th:replace="fragments/header :: head"/>
+    <!--<script src="/resources/js/client.js" th:src="@{/resources/js/client.js}"></script>-->
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h2 th:text="|${car.make} ${car.model} VIN: ${car.vin}|"></h2>
+        <h3>Historia napraw:</h3>
+        <div class="list-group" th:each="repairOrder : ${repairOrders}">
+            <a th:href="|/repair_orders/${repairOrder.id}|" class="btn btn-default"
+               th:text="|Data naprawy:${repairOrder.date} Koszt naprawy:${repairOrder.totalCost}|"></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
