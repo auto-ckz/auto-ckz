@@ -1,7 +1,6 @@
 package auto_ckz.domain.client;
 
 import auto_ckz.domain.car.Car;
-import auto_ckz.domain.car.CarRepository;
 import auto_ckz.domain.repairorder.RepairOrder;
 import auto_ckz.domain.repairorder.RepairOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;

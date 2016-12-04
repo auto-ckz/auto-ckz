@@ -1,7 +1,7 @@
 package auto_ckz.domain.carpart;
 
-import auto_ckz.domain.repair.Repair;
 import auto_ckz.domain.abstracts.AbstractEntity;
+import auto_ckz.domain.repair.Repair;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
