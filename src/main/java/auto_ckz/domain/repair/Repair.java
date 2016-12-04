@@ -1,9 +1,9 @@
 package auto_ckz.domain.repair;
 
-import auto_ckz.domain.repairorder.RepairOrder;
-import auto_ckz.domain.abstracts.AbstractEntity;
 import auto_ckz.common.enums.RepairStatus;
+import auto_ckz.domain.abstracts.AbstractEntity;
 import auto_ckz.domain.mechanic.Mechanic;
+import auto_ckz.domain.repairorder.RepairOrder;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

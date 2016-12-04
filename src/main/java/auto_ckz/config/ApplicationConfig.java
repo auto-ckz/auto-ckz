@@ -1,12 +1,11 @@
 package auto_ckz.config;
 
+import auto_ckz.Application;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-
-import auto_ckz.Application;
 
 @Configuration
 @PropertySource("classpath:persistence.properties")

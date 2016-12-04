@@ -2,14 +2,11 @@ package auto_ckz.domain.repairorder;
 
 import auto_ckz.common.enums.RepairStatus;
 import auto_ckz.domain.car.Car;
-import auto_ckz.domain.car.CarRepository;
 import auto_ckz.domain.repair.Repair;
 import auto_ckz.domain.repair.RepairRepository;
-import auto_ckz.site.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

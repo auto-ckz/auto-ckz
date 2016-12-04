@@ -3,11 +3,10 @@ package auto_ckz.site.signup;
 import auto_ckz.common.constant.Role;
 import auto_ckz.common.messages.MessagesValidate;
 import auto_ckz.common.validators.UniqueEmail;
-import org.hibernate.validator.constraints.*;
-
 import auto_ckz.site.account.Account;
-
-import javax.validation.constraints.Min;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 public class SignupForm {
 
