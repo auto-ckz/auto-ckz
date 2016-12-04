@@ -44,11 +44,4 @@ public class ClientController {
 		return "clients/overview";
 	}
 
-	//TODO: move exception handler to superclass
-	@ExceptionHandler(NotFoundException.class)
-	public String handleNotFoundException(final NotFoundException ex, Model model) {
-		model.addAttribute("errorMessage", ex.getMessage());
-		return "error/general";
-	}
-
 }
