@@ -31,14 +31,6 @@ public class ClientController {
 
 		List<Car> clientCars = clientService.getClientCars(id);
 
-		//TODO: remove test car
-		Car testCar = new Car();
-		testCar.setId(1L);
-		testCar.setMake("Polonez");
-		testCar.setModel("Caro");
-		testCar.setVin("1234567890123456789");
-		clientCars.add(testCar);
-
 		model.addAttribute("client", client);
 		model.addAttribute("cars", clientCars);
 		return "clients/overview";
