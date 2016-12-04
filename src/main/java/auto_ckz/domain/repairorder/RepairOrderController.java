@@ -1,7 +1,10 @@
-package auto_ckz.domain.car;
+package auto_ckz.domain.repairorder;
 
-import auto_ckz.domain.repairorder.RepairOrder;
-import auto_ckz.domain.repairorder.RepairOrderRepository;
+import auto_ckz.common.enums.RepairStatus;
+import auto_ckz.domain.car.Car;
+import auto_ckz.domain.car.CarRepository;
+import auto_ckz.domain.repair.Repair;
+import auto_ckz.domain.repair.RepairRepository;
 import auto_ckz.site.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,24 +22,17 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/cars")
-public class CarController {
-
-	@Autowired
-	private CarRepository carRepository;
-
+@RequestMapping("/repair_orders")
+public class RepairOrderController {
 	@Autowired
 	private RepairOrderRepository repairOrderRepository;
 
+	@Autowired
+	private RepairRepository repairRepository;
+
 	//TODO: check if User accessing this page is the owner of a car
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String carOverview(@PathVariable long id, Model model) {
-		/*
-		Car car = carRepository.findOne(id);
-		if(car == null) {
-			throw new NotFoundException("Can't find car with given id: " + id);
-		}
-		*/
+	public String repairOrderOverview(@PathVariable long id, Model model) {
 		Car testCar = new Car();
 		testCar.setId(1L);
 		testCar.setMake("Polonez");
@@ -47,24 +43,30 @@ public class CarController {
 		testRepairOrder.setId(1L);
 		testRepairOrder.setCar(testCar);
 		testRepairOrder.setTotalCost(new BigDecimal(1500));
-		testRepairOrder.setDescription("test");
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			java.util.Date parsedDate = format.parse("3-12-2016");
+			java.util.Date parsedDate = format.parse("2016-12-03");
 			testRepairOrder.setDate(new java.sql.Date(parsedDate.getTime()));
 		}
 		catch (ParseException e){
 			e.printStackTrace();
 		}
 
+		Repair testRepair = new Repair();
+		testRepair.setRepairOrder(testRepairOrder);
+		testRepair.setDescription("blabla");
+		testRepair.setStatus(RepairStatus.DONE);
+
+
 		//List<RepairOrder> repairOrders = repairOrderRepository.findByCarId(id);
-		List<RepairOrder> repairOrders = new ArrayList<>();
-		repairOrders.add(testRepairOrder);
+		List<Repair> repairs = new ArrayList<>();
+		repairs.add(testRepair);
 
 		model.addAttribute("car", testCar);
-		model.addAttribute("repairOrders", repairOrders);
-		return "cars/repair_history";
+		model.addAttribute("repairOrder", testRepairOrder);
+		model.addAttribute("repairs", repairs);
+		return "repair_orders/summary";
 	}
 
 	//TODO: move exception handler to superclass

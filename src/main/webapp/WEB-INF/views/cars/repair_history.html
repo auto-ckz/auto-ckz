@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Panel klienta</title>
+    <title>Historia napraw</title>
     <meta th:replace="fragments/header :: head"/>
     <!--<script src="/resources/js/client.js" th:src="@{/resources/js/client.js}"></script>-->
 </head>
@@ -9,11 +9,31 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center">
-        <h2 th:text="|${car.make} ${car.model} VIN: ${car.vin}|"></h2>
-        <h3>Historia napraw:</h3>
-        <div class="list-group" th:each="repairOrder : ${repairOrders}">
-            <a th:href="|/repair_orders/${repairOrder.id}|" class="btn btn-default"
-               th:text="|Data naprawy:${repairOrder.date} Koszt naprawy:${repairOrder.totalCost}|"></a>
+        <h2>Historia napraw</h2>
+        <h3 th:text="|${car.make} ${car.model} VIN: ${car.vin}|"></h3>
+        <div th:if="${repairOrders.size() > 0}">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Opis</th>
+                    <th>Koszt</th>
+                    <th>Data</th>
+                    <th>Szczegóły</th>
+                </tr>
+                <tr th:each="repairOrder : ${repairOrders}">
+                    <td th:text="${repairOrder.description}"></td>
+                    <td th:text="|${repairOrder.totalCost} zł|"></td>
+                    <td th:text="${#dates.format(repairOrder.date, 'yyyy-MM-dd')}"></td>
+                    <td>
+                        <a th:href="|/repair_orders/${repairOrder.id}|" class="btn btn-default">
+                            <span class="glyphicon glyphicon-info-sign">
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div th:unless="${repairOrders.size() > 0}">
+            <p class="text-center">Nie dokonano żadnych napraw.</p>
         </div>
     </div>
 </div>
