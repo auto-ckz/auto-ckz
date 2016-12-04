@@ -60,10 +60,4 @@ public class MechanicPanelController {
         return "admin/employees/mechanics/delete";
     }
 
-    @ExceptionHandler(NotFoundException.class)
-    public String handleNotFoundException(final NotFoundException ex, Model model) {
-        model.addAttribute("errorMessage", ex.getMessage());
-        return "error/general";
-    }
-
 }
