@@ -1,12 +1,11 @@
 package auto_ckz.site.account;
 
-import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-
-import java.time.Instant;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import java.time.Instant;
 
 @SuppressWarnings("serial")
 @Entity
