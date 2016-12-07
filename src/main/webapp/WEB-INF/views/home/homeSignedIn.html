@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title th:text="#{view.index.title}">Welcome!</title>
     <meta th:replace="fragments/header :: head"/>
@@ -12,9 +13,7 @@
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
-    <p>
-        Welcome to the Spring MVC Quickstart application!
-    </p>
+    <div sec:authorize="hasRole('ROLE_DIRECTOR')" th:replace="admin/panel :: admin_panel"></div>
 </div>
 </body>
 </html>

@@ -5,7 +5,7 @@ $.validator.addMethod("lettersonly", function(value, element) {
 $.validator.addMethod("pesel", function(value, element) {
     var pesel = value.replace(/[\ \-]/gi, '');
     if (pesel.length != 11) { return false; } else {
-        var steps = new Array(1, 3, 7, 9, 1, 3, 7, 9, 1, 3);
+        var steps = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
         var sum_nb = 0;
         for (var x = 0; x < 10; x++) { sum_nb += steps[x] * pesel[x];}
         sum_m = 10 - sum_nb % 10;
@@ -30,6 +30,14 @@ $.validator.addMethod(
 
 $(function() {
     $("form[name='addPersonForm']").validate({
+        errorElement: 'span',
+        errorClass: 'help-block',
+        highlight: function(element) {
+            $(element).parent().addClass("has-error");
+        },
+        unhighlight: function(element) {
+            $(element).parent().removeClass("has-error");
+        },
         rules: {
             firstName: {
                 required: true,
@@ -77,7 +85,7 @@ $(function() {
                 minlength: "Pesel powinien składać się dokładnie z 11-u cyfr",
                 maxlength: "Pesel powinien składać się dokładnie z 11-u cyfr",
                 digits: "Pesel powinien składać się jedynie z cyfr",
-            },
+            }
         }
     });
 });

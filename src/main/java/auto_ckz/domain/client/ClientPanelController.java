@@ -23,7 +23,7 @@ public class ClientPanelController {
 	}
 
 	@RequestMapping(value= "add", method = RequestMethod.GET)
-	public String addClient(Model model) {
+	public String addClient( Model model) {
 		model.addAttribute("client", new Client());
 		return "admin/clients/add";
 	}

@@ -10,6 +10,6 @@ public class AdminPanelController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanel() {
-        return "/admin/panel";
+        return "redirect:/";
     }
 }

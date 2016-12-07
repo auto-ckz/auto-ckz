@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+<head th:fragment="head" th:remove="tag">
+    <script src="/resources/js/jquery.validate.min.js" th:src="@{/resources/js/jquery.validate.min.js}"></script>
+    <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
 </head>
 <body>
 <div th:fragment="personAddForm" th:align="center">
     <div class="form-group">
-        <label for="firstName">Imię:</label>
+        <label for="firstName" class="control-label">Imię:</label>
         <input class="form-control" id="firstName" type="text" th:field="*{firstName}" />
     </div>
     <div class="form-group">
-        <label for="lastName">Nazwisko:</label>
+        <label for="lastName" class="control-label">Nazwisko:</label>
         <input class="form-control" id="lastName" type="text" th:field="*{lastName}" />
     </div>
     <div class="form-group">
-        <label for="phoneNumber">Nr telefonu:</label>
+        <label for="phoneNumber" class="control-label">Nr telefonu:</label>
         <input class="form-control" id="phoneNumber" type="text" th:field="*{phoneNumber}" />
     </div>
     <div class="form-group">
-        <label for="pesel">Pesel:</label>
+        <label for="pesel" class="control-label">Pesel:</label>
         <input class="form-control" id="pesel" type="text" th:field="*{pesel}" />
     </div>
 </div>
