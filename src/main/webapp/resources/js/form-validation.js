@@ -5,6 +5,7 @@ $.validator.addMethod("lettersonly", function(value, element) {
 $.validator.addMethod("pesel", function(value, element) {
     var pesel = value.replace(/[\ \-]/gi, '');
     if (pesel.length != 11) { return false; } else {
+
         var steps = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
         var sum_nb = 0;
         for (var x = 0; x < 10; x++) { sum_nb += steps[x] * pesel[x];}
