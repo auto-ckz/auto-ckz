@@ -36,7 +36,7 @@ public class JpaConfig {
     private String dialect;
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
-    @Value("${hibernate.hbm2ddl.import_files}")
+    @Value("${hibernate.hbm2ddl.import_files:#{null}}")
     private String importFiles;
 
     @Bean
@@ -68,7 +68,9 @@ public class JpaConfig {
         Properties jpaProperties = new Properties();
         jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
         jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
-        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_IMPORT_FILES, importFiles);
+        if(importFiles != null) {
+            jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_IMPORT_FILES, importFiles);
+        }
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
