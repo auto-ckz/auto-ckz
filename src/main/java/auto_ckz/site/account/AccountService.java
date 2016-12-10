@@ -30,10 +30,12 @@ public class AccountService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@PostConstruct	
+	@PostConstruct
 	protected void initialize() {
 		save(new Account("admin@admin.com", "admin",  Role.ROLE_DIRECTOR));
 		save(new Account("client@client.com", "client",  Role.ROLE_CLIENT));
+		save(new Account("stefan@client.com", "stefan",  Role.ROLE_CLIENT));
+		save(new Account("wieslaw@client.com", "wieslaw",  Role.ROLE_CLIENT));
 	}
 
 	@Transactional

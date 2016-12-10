@@ -1,16 +1,24 @@
 package auto_ckz.domain.car;
 
 import auto_ckz.domain.abstracts.AbstractEntity;
+import auto_ckz.domain.client.Client;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.sql.Date;
 
 @Entity
 @Data
 public class Car extends AbstractEntity {
+
+    @ManyToOne
+    @JoinColumn(name = "clientId", nullable = false)
+    private Client client;
 
     @Length(max = 50)
     private String make;
