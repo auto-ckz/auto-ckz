@@ -9,6 +9,7 @@ import java.util.List;
 @RepositoryRestResource
 public interface CarRepository extends PagingAndSortingRepository<Car, Long> {
     List<Car> findByMake(@Param("make") String make);
+    List<Car> findByClientId(@Param("clientId") long clientId);
     Car findByRegistrationNumber(@Param("registrationNumber") String registrationNumber);
     Car findByOc(@Param("oc") String oc);
     Car findByVin(@Param("vin") String vin);
