@@ -34,7 +34,7 @@ public class AccountServiceTest {
 	public ExpectedException thrown = ExpectedException.none();
 
 	@Test
-	public void shouldInitializeWithTwoDemoUsers() {
+	public void shouldInitializeWithFourDemoUsers() {
 		// act
 		accountService.initialize();
 		// assert
