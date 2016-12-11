@@ -55,7 +55,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/", "/favicon.ico", "/resources/**", "/signup").permitAll()
-                .antMatchers("/adminPanel/**").access("hasRole('ROLE_DIRECTOR')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_DIRECTOR')")
+                .antMatchers("/mechanic/**").access("hasRole('ROLE_MECHANIC')")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()

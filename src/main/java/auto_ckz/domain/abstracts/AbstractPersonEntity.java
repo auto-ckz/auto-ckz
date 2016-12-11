@@ -31,4 +31,13 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Address address;
 
+    public AbstractPersonEntity() {
+    }
+
+    public AbstractPersonEntity(String firstName, String lastName, String phoneNumber, String pesel) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.pesel = pesel;
+    }
 }
