@@ -35,4 +35,14 @@ public class RepairOrder extends AbstractEntity {
     @JoinColumn(name = "carId", nullable = false)
     private Car car;
 
+    public RepairOrder() {
+    }
+
+    public RepairOrder(Date date, BigDecimal totalCost, Client client, MemberOfCustomerService memberOfCustomerService, Car car) {
+        this.date = date;
+        this.totalCost = totalCost;
+        this.client = client;
+        this.memberOfCustomerService = memberOfCustomerService;
+        this.car = car;
+    }
 }
