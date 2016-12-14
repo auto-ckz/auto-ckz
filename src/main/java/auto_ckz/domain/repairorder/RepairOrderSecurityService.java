@@ -16,37 +16,39 @@ import java.security.Principal;
 @Service
 class RepairOrderSecurityService {
 
-	@Autowired
-	private AccountRepository accountRepository;
+    @Autowired
+    private AccountRepository accountRepository;
 
-	@Autowired
-	private ClientRepository clientRepository;
+    @Autowired
+    private ClientRepository clientRepository;
 
-	@Autowired
-	private MemberOfCustomerServiceRepository customerServiceRepository;
+    @Autowired
+    private MemberOfCustomerServiceRepository customerServiceRepository;
 
-	boolean isAccountAuthorized(RepairOrder repairOrder, Principal principal){
-		boolean authorized;
+    //TODO: unit tests, allow access for mechanics?
+    boolean isAccountAuthorized(RepairOrder repairOrder, Principal principal) {
+        boolean authorized;
 
-		Account account = accountRepository.findOneByEmail(principal.getName());
-		switch (account.getRole()){
-			case(Role.ROLE_DIRECTOR) : {
-				authorized = true;
-				break;
-			}
-			case(Role.ROLE_CUSTOMER_SERVICE) : {
-				MemberOfCustomerService customerServiceMember = customerServiceRepository.findByAccountId(account.getId());
-				authorized = customerServiceMember.getId().equals(repairOrder.getMemberOfCustomerService().getId());
-				break;
-			}
-			case(Role.ROLE_CLIENT) : {
-				Client client = clientRepository.findByAccountId(account.getId());
-				authorized = client.getId().equals(repairOrder.getClient().getId());
-				break;
-			}
-			default: authorized = false;
-		}
+        Account account = accountRepository.findOneByEmail(principal.getName());
+        switch (account.getRole()) {
+            case (Role.ROLE_DIRECTOR): {
+                authorized = true;
+                break;
+            }
+            case (Role.ROLE_CUSTOMER_SERVICE): {
+                MemberOfCustomerService customerServiceMember = customerServiceRepository.findByAccountId(account.getId());
+                authorized = customerServiceMember != null && repairOrder.getMemberOfCustomerService().getId().equals(customerServiceMember.getId());
+                break;
+            }
+            case (Role.ROLE_CLIENT): {
+                Client matchedClient = clientRepository.findByAccountId(account.getId());
+                authorized = matchedClient != null && repairOrder.getClient().getId().equals(matchedClient.getId());
+                break;
+            }
+            default:
+                authorized = false;
+        }
 
-		return authorized;
-	}
+        return authorized;
+    }
 }

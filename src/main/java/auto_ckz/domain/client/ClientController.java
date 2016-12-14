@@ -39,7 +39,7 @@ public class ClientController {
 			throw new UnauthorizedException("Nie posiadasz uprawnień do tego zasobu.");
 		}
 
-		List<Car> clientCars = carRepository.findByClient(id);
+		List<Car> clientCars = carRepository.findByClientId(id);
 
 		model.addAttribute("client", client);
 		model.addAttribute("cars", clientCars);
