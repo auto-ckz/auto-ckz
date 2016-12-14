@@ -1,20 +1,24 @@
 package auto_ckz.site.signup;
 
 import auto_ckz.common.constant.Role;
+import auto_ckz.common.messages.MessagesValidate;
+import auto_ckz.common.validators.UniqueEmail;
 import org.hibernate.validator.constraints.*;
 
 import auto_ckz.site.account.Account;
 
+import javax.validation.constraints.Min;
+
 public class SignupForm {
 
-	private static final String NOT_BLANK_MESSAGE = "{notBlank.message}";
-	private static final String EMAIL_MESSAGE = "{email.message}";
 
-    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
-	@Email(message = SignupForm.EMAIL_MESSAGE)
+	@NotBlank(message = MessagesValidate.NOT_BLANK_MESSAGE)
+	@Email(message = MessagesValidate.EMAIL_MESSAGE)
+	@UniqueEmail(message = MessagesValidate.EMAIL_EXIST)
 	private String email;
 
-    @NotBlank(message = SignupForm.NOT_BLANK_MESSAGE)
+	@NotBlank(message = MessagesValidate.NOT_BLANK_MESSAGE)
+	@Length(min = 5, message = MessagesValidate.MIN_PASSWORD_LENGTH_MESSAGE)
 	private String password;
 
     public String getEmail() {

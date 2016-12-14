@@ -3,8 +3,8 @@
 <head>
     <title th:text="#{view.index.title}">Edytuj pracownika obsługi klienta</title>
     <meta th:replace="fragments/header :: head"/>
-    <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script>
-    <script src="/resources/js/form-validation.js" th:src="@{/resources/js/form-validation.js}"></script>
+    <meta th:replace="fragments/person_edit_form :: head"/>
+    <script src="/resources/js/membersOfCustomerService.js" th:src="@{/resources/js/membersOfCustomerService.js}"></script></head>
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>

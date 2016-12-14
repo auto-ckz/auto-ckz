@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="#{view.index.title}">Panel administratora</title>
-    <meta th:replace="fragments/header :: head"/>
 </head>
 <body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
-<div class="container">
+<div th:fragment="admin_panel">
     <h1 class="display-2 text-center">Panel administratora</h1>
     <div class="jumbotron text-center">
         <h4 class="text-left">
