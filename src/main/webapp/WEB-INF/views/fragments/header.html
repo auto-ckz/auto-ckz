@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:fragment="head" th:remove="tag">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}" property="bootstrap"/>
@@ -23,10 +24,28 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-                <li><a href="/admin" th:href="@{/admin}">Panel administratora</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li sec:authorize="hasRole('ROLE_DIRECTOR')" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Tabele <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="navbar-link" th:href="@{/admin/clients}">Klienci</a>
+                        </li>
+                        <li>
+                            <a class="navbar-link" th:href="@{/admin/employees/mechanics}">Mechanicy</a>
+                        </li>
+                        <li>
+                            <a class="navbar-link" th:href="@{/admin/employees/customer_service}">Obsługa klienta</a>
+                        </li>
+                        <li>
+                            <a class="navbar-link" th:href="@{/admin/summary}">Zyski</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                </li>
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">
                     <a href="/signin" th:href="@{/signin}">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
