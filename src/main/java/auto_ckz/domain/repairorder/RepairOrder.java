@@ -35,4 +35,6 @@ public class RepairOrder extends AbstractEntity {
     @JoinColumn(name = "carId", nullable = false)
     private Car car;
 
+    private String description;
+
 }

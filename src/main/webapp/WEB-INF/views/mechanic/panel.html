@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Panel mechanika</title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/mechanicPanel.js" th:src="@{/resources/js/mechanicPanel.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h1 class="display-2 text-center">Panel mechanika</h1>
+    <div class="jumbotron text-center">
+        <div th:if="${repairOrders != null}" >
+                <label for="sel1">Wybierz aktualnie naprawiany samochód: </label>
+                 <form id="chooseCar" name="chooseCar" class="form-horizontal" action="#">
+                    <select class="form-control" id="sel1" th:field="*{repairOrders}" th:remove="all-but-first">
+                        <div th:each="repairOrder : ${repairOrders}" th:remove="tag">
+                            <option th:value="${repairOrder.id}" th:text="${repairOrder.car.make} + ' ' + ${repairOrder.car.model} + ',    Numer rejestracyjny: ' + ${repairOrder.car.registrationNumber}"/>
+                        </div>
+                    </select>
+                     <br>
+                     <div class="form-group">
+                         <button type="submit" class="btn btn-success">Wybierz</button>
+                     </div>
+                 </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
