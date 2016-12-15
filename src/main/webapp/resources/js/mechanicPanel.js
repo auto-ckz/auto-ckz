@@ -1,7 +1,11 @@
 $(document).ready(function(){
+    $('#status option:contains("NOT_STARTED")').text('Nie rozpoczęto');
+    $('#status option:contains("IN_PROGRESS")').text('W trakcie');
+    $('#status option:contains("SUSPENDED")').text('Wstrzymano');
+    $('#status option:contains("DONE")').text('Zakończono');
     $("#chooseCar").on("submit", function(){
         var id = $("#sel1 option:selected").val();
-        window.location.href = '/mechanic/' + id;
+        window.location.href = '/mechanic/repair_order/' + id;
         return false;
     })
     $("#chooseRepair").on("submit", function(){

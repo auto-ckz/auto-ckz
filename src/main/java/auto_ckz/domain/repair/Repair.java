@@ -23,21 +23,11 @@ public class Repair extends AbstractEntity {
     private String observation;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "repairOrderId", nullable = false)
+    @JoinColumn(name = "repairOrderId", nullable = true)
     private RepairOrder repairOrder;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "mechanicId", nullable = false)
+    @JoinColumn(name = "mechanicId", nullable = true)
     private Mechanic mechanic;
 
-    public Repair() {
-    }
-
-    public Repair(String description, RepairStatus status, String observation, RepairOrder repairOrder, Mechanic mechanic) {
-        this.description = description;
-        this.status = status;
-        this.observation = observation;
-        this.repairOrder = repairOrder;
-        this.mechanic = mechanic;
-    }
 }

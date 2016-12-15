@@ -7,11 +7,4 @@ import javax.persistence.Entity;
 
 @Entity
 @Data
-public class MemberOfCustomerService extends AbstractPersonEntity {
-    public MemberOfCustomerService() {
-    }
-
-    public MemberOfCustomerService(String firstName, String lastName, String phoneNumber, String pesel) {
-        super(firstName, lastName, phoneNumber, pesel);
-    }
-}
+public class MemberOfCustomerService extends AbstractPersonEntity { }
