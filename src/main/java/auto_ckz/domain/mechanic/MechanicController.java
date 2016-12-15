@@ -33,7 +33,7 @@ public class MechanicController {
         return "/mechanic/panel";
     }
 
-    @RequestMapping(value= "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value= "/repair_order/{id}", method = RequestMethod.GET)
     public String chooseRepair(@PathVariable long id, Model model) throws NotFoundException {
         List<Repair> repairList = repairRepository.findByRepairOrderId(id);
         if(repairList == null) {
@@ -44,7 +44,7 @@ public class MechanicController {
         return "/mechanic/repair";
     }
 
-    @RequestMapping(value= "/{id}", method = RequestMethod.GET,  params={"repairid"})
+    @RequestMapping(value= "/repair_order/{id}", method = RequestMethod.GET,  params={"repairid"})
     public String chooseRepair(@PathVariable long id, @RequestParam("repairid") long repairid, RedirectAttributes redirectAttrs) throws NotFoundException {
         Repair repair = repairRepository.findOne(repairid);
         List<Repair> repairList = repairRepository.findByRepairOrderId(id);
@@ -54,6 +54,6 @@ public class MechanicController {
         redirectAttrs.addFlashAttribute("repair", repair);
         redirectAttrs.addFlashAttribute("repairs", repairList);
         redirectAttrs.addFlashAttribute("repairStatus", RepairStatusWrapper.instance);
-        return "redirect:/mechanic/" + id;
+        return "redirect:/mechanic/repair_order/" + id;
     }
 }

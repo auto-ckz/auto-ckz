@@ -54,21 +54,4 @@ public class Car extends AbstractEntity {
     @Length(max = 20)
     private String fuelType;
 
-    public Car() {
-    }
-
-    public Car(String make, String model, int year, String registrationNumber, String vin, Date dateOfFirstRegistration, String oc, boolean vehicleCheckup, int vehicleMileage, String engineCapacity, String enginePower, String fuelType) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.registrationNumber = registrationNumber;
-        this.vin = vin;
-        this.dateOfFirstRegistration = dateOfFirstRegistration;
-        this.oc = oc;
-        this.vehicleCheckup = vehicleCheckup;
-        this.vehicleMileage = vehicleMileage;
-        this.engineCapacity = engineCapacity;
-        this.enginePower = enginePower;
-        this.fuelType = fuelType;
-    }
 }
