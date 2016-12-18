@@ -9,14 +9,26 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center">
-        <h2>Wybierz samochód:</h2>
-        <div class="list-group" th:each="car : ${cars}">
-            <a th:href="|/cars/${car.id}|" class="btn btn-default">
-                <h4 class="list-group-item-heading" th:text="|${car.make} ${car.model}"></h4>
-                <span class="glyphicon glyphicon-chevron-right" th:text="|(VIN:${car.vin})|">
-                </span>
-            </a>
-        </div>
+        <h2>Lista samochodów</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>VIN</th>
+                <th>Historia napraw</th>
+            </tr>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.make}"></td>
+                <td th:text="${car.model}"></td>
+                <td th:text="${car.vin}"></td>
+                <td>
+                    <a th:href="|/cars/${car.id}|" class="btn btn-default">
+                                <span class="glyphicon glyphicon-wrench">
+                                </span>
+                    </a>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>

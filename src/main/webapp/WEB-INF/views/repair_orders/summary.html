@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="jumbotron text-center">
-        <h2 th:text="|Podsumowanie naprawy ${repairOrder.description}|"></h2>
+        <h2 th:text="|Podsumowanie naprawy: ${repairOrder.description}|"></h2>
         <h3 th:text="|${car.make} ${car.model} VIN: ${car.vin}|"></h3>
         <div th:if="${repairs.size() > 0}">
             <table class="table table-bordered">
