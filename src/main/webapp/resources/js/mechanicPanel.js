@@ -4,12 +4,12 @@ $(document).ready(function(){
     $('#status option:contains("SUSPENDED")').text('Wstrzymano');
     $('#status option:contains("DONE")').text('Zakończono');
     $("#chooseCar").on("submit", function(){
-        var id = $("#sel1 option:selected").val();
+        var id = $("#selectCar option:selected").val();
         window.location.href = '/mechanic/repair_order/' + id;
         return false;
     })
     $("#chooseRepair").on("submit", function(){
-        var repairId = $("#sel2 option:selected").val();
+        var repairId = $("#selectRepair option:selected").val();
         window.location.href = window.location.href + '?repairid=' + repairId;
         return false;
     })
@@ -26,7 +26,6 @@ $(document).ready(function(){
                 window.location.reload();
             }
             alert("Zapisano zmiany pomyślnie");
-            window.location.href;
         });
         return false;
     })

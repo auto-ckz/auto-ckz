@@ -11,9 +11,9 @@
     <h1 class="display-2 text-center">Panel mechanika</h1>
     <div class="jumbotron text-center">
         <div th:if="${repairOrders != null}" >
-                <label for="sel1">Wybierz aktualnie naprawiany samochód: </label>
+                <label for="selectCar">Wybierz aktualnie naprawiany samochód: </label>
                  <form id="chooseCar" name="chooseCar" class="form-horizontal" action="#">
-                    <select class="form-control" id="sel1" th:field="*{repairOrders}" th:remove="all-but-first">
+                    <select class="form-control" id="selectCar" th:field="*{repairOrders}" th:remove="all-but-first">
                         <div th:each="repairOrder : ${repairOrders}" th:remove="tag">
                             <option th:value="${repairOrder.id}" th:text="${repairOrder.car.make} + ' ' + ${repairOrder.car.model} + ',    Numer rejestracyjny: ' + ${repairOrder.car.registrationNumber}"/>
                         </div>

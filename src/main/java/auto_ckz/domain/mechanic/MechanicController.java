@@ -1,6 +1,5 @@
 package auto_ckz.domain.mechanic;
 
-import auto_ckz.common.enums.RepairStatusWrapper;
 import auto_ckz.domain.repair.Repair;
 import auto_ckz.domain.repair.RepairRepository;
 import auto_ckz.domain.repairorder.RepairOrderRepository;
@@ -39,7 +38,6 @@ public class MechanicController {
         if(repairList == null) {
             throw new NotFoundException("Can't find repair with given id: " + id);
         }
-        model.addAttribute("repairStatus", RepairStatusWrapper.instance);
         model.addAttribute("repairs", repairList);
         return "/mechanic/repair";
     }
@@ -53,7 +51,6 @@ public class MechanicController {
         }
         redirectAttrs.addFlashAttribute("repair", repair);
         redirectAttrs.addFlashAttribute("repairs", repairList);
-        redirectAttrs.addFlashAttribute("repairStatus", RepairStatusWrapper.instance);
         return "redirect:/mechanic/repair_order/" + id;
     }
 }

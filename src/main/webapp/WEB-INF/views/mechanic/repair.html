@@ -10,11 +10,11 @@
 <div class="container">
     <h3 class="display-2 text-center">Lista napraw</h3>
     <div th:if="${repairs != null}" >
-        <label for="sel2">Wybierz dokonywaną naprawę: </label>
+        <label for="selectRepair">Wybierz dokonywaną naprawę: </label>
         <form id="chooseRepair" name="chooseRepair" class="form-horizontal" action="#" onsubmit="return false">
             <div class="form-group">
-                <select class="form-control" id="sel2">
-                    <div th:each="repair1 : ${repairs}" th:if="${repair1.status != repairStatus.getDONE()}" th:remove="tag">
+                <select class="form-control" id="selectRepair">
+                    <div th:each="repair1 : ${repairs}" th:if="${repair1.status.name() != 'DONE'}" th:remove="tag">
                         <div th:if="${repair == null}">
                             <option th:value="${repair1.id}" th:text="${repair1.description}"/>
                         </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <h4 class="text-left"> Status naprawy: </h4>
                 <select class="form-control" id="status" th:field="*{status}">
-                    <div th:each="status : ${repairStatus.getAll()}" th:remove="tag">
+                    <div th:each="status : ${repair.status.values()}" th:remove="tag">
                         <option th:value="${status}" th:text="${status}" th:selected="${repair.status == status}"/>
                     </div>
                 </select>
