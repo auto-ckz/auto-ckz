@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Panel mechanika</title>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/mechanicPanel.js" th:src="@{/resources/js/mechanicPanel.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h3 class="display-2 text-center">Lista napraw</h3>
+    <div th:if="${repairs != null}" >
+        <label for="selectRepair">Wybierz dokonywaną naprawę: </label>
+        <form id="chooseRepair" name="chooseRepair" class="form-horizontal" action="#" onsubmit="return false">
+            <div class="form-group">
+                <select class="form-control" id="selectRepair">
+                    <div th:each="repair1 : ${repairs}" th:if="${repair1.status.name() != 'DONE'}" th:remove="tag">
+                        <div th:if="${repair == null}">
+                            <option th:value="${repair1.id}" th:text="${repair1.description}"/>
+                        </div>
+                        <div th:if="${repair != null}">
+                            <option th:value="${repair1.id}" th:text="${repair1.description}" th:selected="${repair.id == repair1.id}"/>
+                        </div>
+                    </div>
+                </select>
+                <button type="submit" class="btn btn-success center-block">Wybierz</button>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <div id="hiddenData" th:if="${repair != null}" class="jumbotron text-center" >
+        <form id="editRepair" name="editRepair" class="form-horizontal" action="#" th:object="${repair}">
+            <div class="form-group">
+                <input class="form-control" id="id" type="hidden" th:field="*{id}"/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="description" type="hidden" th:field="*{description}"/>
+            </div>
+            <div class="form-group">
+                <h4 class="text-left"> Status naprawy: </h4>
+                <select class="form-control" id="status" th:field="*{status}">
+                    <div th:each="status : ${repair.status.values()}" th:remove="tag">
+                        <option th:value="${status}" th:text="${status}" th:selected="${repair.status == status}"/>
+                    </div>
+                </select>
+            </div>
+            <div class="form-group">
+                <h4 class="text-left" > Uwagi: </h4>
+                <textarea class="form-control" id="observation" rows="3" th:field="*{observation}"/>
+            </div>
+            <button type="submit" class="btn btn-success">Zapisz zmiany</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

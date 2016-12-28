@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/admin/employees/customer_service")
-public class MemberOfCustomerServicePanelController {
+public class MemberOfCustomerServiceAdministrationController {
 
     @Autowired
     private MemberOfCustomerServiceRepository memberOfCustomerServiceRepository;
