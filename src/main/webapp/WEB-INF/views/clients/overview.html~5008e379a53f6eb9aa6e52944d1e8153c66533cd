@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Panel klienta</title>
+    <meta th:replace="fragments/header :: head"/>
+    <!--<script src="/resources/js/client.js" th:src="@{/resources/js/client.js}"></script>-->
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="jumbotron text-center">
+        <h2>Lista samochodów</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>VIN</th>
+                <th>Historia napraw</th>
+            </tr>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.make}"></td>
+                <td th:text="${car.model}"></td>
+                <td th:text="${car.vin}"></td>
+                <td>
+                    <a th:href="|/cars/${car.id}|" class="btn btn-default">
+                                <span class="glyphicon glyphicon-wrench">
+                                </span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
