@@ -51,7 +51,7 @@ public class MechanicController {
         if(repair == null) {
             throw new NotFoundException("Nie można znaleźć zamówienia z id: " + repairid);
         }
-        else if(repairList == null){
+        if(repairList == null){
             throw new NotFoundException("Nie można znaleźć naprawy z id: " + id);
         }
         redirectAttrs.addFlashAttribute("repair", repair);
