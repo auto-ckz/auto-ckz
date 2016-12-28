@@ -31,7 +31,7 @@ public class ClientController {
 	public String clientOverview(@PathVariable long id, Model model, Principal principal) {
 		Client client = clientRepository.findOne(id);
 		if(client == null) {
-			throw new NotFoundException("Nie można znaleść klienta z id: " + id);
+			throw new NotFoundException("Nie można znaleźć klienta z id: " + id);
 		}
 
 		if(!securityService.isAccountAuthorized(client, principal)){

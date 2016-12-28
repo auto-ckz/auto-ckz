@@ -5,7 +5,7 @@ $(document).ready(function(){
     $('#status option:contains("DONE")').text('Zakończono');
     $("#chooseCar").on("submit", function(){
         var id = $("#selectCar option:selected").val();
-        window.location.href = '/mechanic/repair_order/' + id;
+        window.location.href = '/mechanics/repair_order/' + id;
         return false;
     })
     $("#chooseRepair").on("submit", function(){

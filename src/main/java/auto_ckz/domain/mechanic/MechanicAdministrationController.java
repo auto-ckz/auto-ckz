@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/admin/employees/mechanics")
-public class MechanicPanelController {
+public class MechanicAdministrationController {
 
     @Autowired
 	private MechanicRepository mechanicRepository;
