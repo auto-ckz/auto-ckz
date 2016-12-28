@@ -5,10 +5,11 @@ import auto_ckz.domain.car.CarRepository;
 import auto_ckz.site.error.NotFoundException;
 import auto_ckz.site.error.UnauthorizedException;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
 import java.util.List;
@@ -43,13 +44,6 @@ public class ClientController {
 		model.addAttribute("client", client);
 		model.addAttribute("cars", clientCars);
 		return "clients/overview";
-	}
-
-	//TODO: move exception handler to superclass
-	@ExceptionHandler(NotFoundException.class)
-	public String handleNotFoundException(final NotFoundException ex, Model model) {
-		model.addAttribute("errorMessage", ex.getMessage());
-		return "error/general";
 	}
 
 }
