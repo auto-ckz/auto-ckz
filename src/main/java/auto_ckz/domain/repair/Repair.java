@@ -19,11 +19,14 @@ public class Repair extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private RepairStatus status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "repairOrderId", nullable = false)
+    @Length(max = 200)
+    private String observation;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "repairOrderId", nullable = true)
     private RepairOrder repairOrder;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mechanicId", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "mechanicId", nullable = true)
     private Mechanic mechanic;
 }
