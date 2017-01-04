@@ -20,9 +20,6 @@ public class HomeController {
 	@Autowired
 	private AccountRepository repository;
 
-	@Autowired
-	private ClientRepository clientRepository;
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Principal principal,  Model model) {
 		if(principal == null)
@@ -37,14 +34,7 @@ public class HomeController {
 			case Role.ROLE_CUSTOMER_SERVICE:
 				return "redirect:/customerService/";
 			default:
-				Client client = clientRepository.findByAccountId(account.getId());
-				if(client != null){
-					return "redirect:/clients/" + client.getId();
-				}
-				client = new Client();
-				client.setAddress(new Address());
-				model.addAttribute(new Client());
-				return "clients/edit";
+				return "redirect:/clients";
 
 		}
 	}

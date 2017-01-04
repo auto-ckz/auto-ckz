@@ -1,6 +1,7 @@
 package auto_ckz.domain.client;
 
 import auto_ckz.domain.address.Address;
+import auto_ckz.domain.address.AddressRepository;
 import auto_ckz.domain.car.Car;
 import auto_ckz.domain.car.CarRepository;
 import auto_ckz.site.account.Account;
@@ -11,6 +12,7 @@ import auto_ckz.site.signup.SignupForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +32,9 @@ public class ClientController {
 	private AccountRepository accountRepository;
 
 	@Autowired
+	private AddressRepository addressRepository;
+
+	@Autowired
 	private ClientRepository clientRepository;
 
 	@Autowired
@@ -37,6 +42,18 @@ public class ClientController {
 
 	@Autowired
 	private ClientSecurityService securityService;
+
+	@RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
+	public String clientIndex(Model model, Principal principal) {
+		Account account = accountRepository.findOneByEmail(principal.getName());
+		Client client = clientRepository.findByAccountId(account.getId());
+		if(client == null) {
+			model.addAttribute("client", new Client());
+			model.addAttribute("address", new Address());
+			return "clients/edit";
+		}
+		return "redirect:/clients/" + client.getId();
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String clientOverview(@PathVariable long id, Model model, Principal principal) {
@@ -57,16 +74,18 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String clientOverview(@Valid @ModelAttribute Client client, Errors errors, Principal principal) {
-		if(errors.hasErrors()){
+	public String addPersonalData(@Valid @ModelAttribute Client client, BindingResult bindingResultClient,
+								  @Valid @ModelAttribute Address address, BindingResult bindingResultAddress, Principal principal) {
+		if(bindingResultAddress.hasErrors() || bindingResultClient.hasErrors()){
 			return "clients/edit";
 		}
 		Account account = accountRepository.findOneByEmail(principal.getName());
-
+		addressRepository.save(address);
+		client.setAddress(address);
 		client.setAccount(account);
 		clientRepository.save(client);
 
-		return "redirect:clients/" + client.getId();
+		return "redirect:/clients/" + client.getId();
 	}
 
 }
