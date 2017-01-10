@@ -28,7 +28,7 @@ public class MechanicController {
     public String mechanicPanel(Model model) {
         List<RepairOrder> repairOrders = Lists.newArrayList(repairOrderRepository.findAll());
         model.addAttribute("repairOrders", repairOrders);
-        if(repairOrders == null) {
+        if(repairOrders.isEmpty()) {
             throw new NotFoundException("Nie znaleziono żadnego zamówienia: ");
         }
         return "/mechanics/panel";
