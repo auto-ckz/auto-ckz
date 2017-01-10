@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DirectorController {
 
     @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
-    public String clientOverview() {
+    public String directorIndex() {
         return "admin/panel";
     }
 

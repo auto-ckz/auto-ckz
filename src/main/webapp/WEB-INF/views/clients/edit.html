@@ -28,23 +28,23 @@
                 <span class="help-block" th:if="${#fields.hasErrors('client.phoneNumber')}" th:errors="${client.phoneNumber}"></span>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('address.street')}? 'has-error'">
-                <label for="phoneNumber">Ulica:</label>
+                <label for="street">Ulica:</label>
                 <input class="form-control" id="street" type="text" th:value="${address.street}" name="street"/>
                 <span class="help-block" th:if="${#fields.hasErrors('address.street')}" th:errors="${address.street}"></span>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('address.city')}? 'has-error'">
-                <label for="phoneNumber">Miasto:</label>
+                <label for="city">Miasto:</label>
                 <input class="form-control" id="city" type="text" th:value="${address.city}" name="city"/>
                 <span class="help-block" th:if="${#fields.hasErrors('address.city')}" th:errors="${address.city}"></span>
             </div>
 
             <div class="form-group" th:classappend="${#fields.hasErrors('address.houseNumber')}? 'has-error'">
-                <label for="phoneNumber">Nr mieszkania/domu:</label>
+                <label for="houseNumber">Nr mieszkania/domu:</label>
                 <input class="form-control" id="houseNumber" type="text" th:value="${address.houseNumber}" name="houseNumber"/>
                 <span class="help-block" th:if="${#fields.hasErrors('address.houseNumber')}" th:errors="${address.houseNumber}"></span>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('address.zipCode')}? 'has-error'">
-                <label for="phoneNumber">Kod pocztowy:</label>
+                <label for="zipCode">Kod pocztowy:</label>
                 <input class="form-control" id="zipCode" type="text" th:value="${address.zipCode}" name="zipCode"/>
                 <span class="help-block" th:if="${#fields.hasErrors('address.zipCode')}" th:errors="${address.zipCode}"></span>
             </div>
