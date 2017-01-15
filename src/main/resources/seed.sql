@@ -2,8 +2,8 @@
 INSERT INTO client (id, firstName, lastName, phoneNumber) VALUES (1, 'Stefan', 'Klient', '123456789');
 INSERT INTO client (id, firstName, lastName, phoneNumber) VALUES (2, 'Wiesław', 'Klient', '987654321');
 
-INSERT INTO car (id, clientid, make, model, registrationNumber,  vin, vehiclecheckup, vehiclemileage, year) VALUES (1, 1, 'Polonez', 'Caro', 'GA234f','12345678901234567', true, 30010, 1985);
-INSERT INTO car (id, clientid, make, model, registrationNumber, vin, vehiclecheckup, vehiclemileage, year) VALUES (2, 2, 'Fiat', '125p', 'GDA235', '23465345324234434', true, 242432, 1981);
+INSERT INTO car (id, clientid, make, model, year, registrationNumber, vin, dateOfFirstRegistration, vehiclecheckup, vehiclemileage, engineCapacity, enginePower, fuelType) VALUES (1, 1, 'Polonez', 'Caro', 1988, 'GA234f','12345678901234567', '1988-10-05', true, 300103, '1.2', '62 KM', 'benzyna');
+INSERT INTO car (id, clientid, make, model, year, registrationNumber, vin, dateOfFirstRegistration, vehiclecheckup, vehiclemileage, engineCapacity, enginePower, fuelType) VALUES (2, 2, 'Fiat', '125p', 1972, 'GDA235', '23465345324234434', '1975-12-04', true, 242433, '1.5', '78 KM', 'gaz');
 
 INSERT INTO mechanic (id, firstName, lastName, phoneNumber) VALUES (1, 'Zbigniew', 'Mechanik', '92042453923');
 INSERT INTO mechanic (id, firstName, lastName, phoneNumber) VALUES (2, 'Stas', 'Mechanik', '93024243563');
