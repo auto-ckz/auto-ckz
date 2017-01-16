@@ -1,6 +1,9 @@
 -- Dodawanie kont odbywa się w metodzie initialize klasy AccountService
-INSERT INTO client (id, firstName, lastName, phoneNumber) VALUES (1, 'Stefan', 'Klient', '123456789');
-INSERT INTO client (id, firstName, lastName, phoneNumber) VALUES (2, 'Wiesław', 'Klient', '987654321');
+INSERT INTO address (id, street, city, houseNumber, zipCode) VALUES (1, 'Ikara', 'Gdynia', '2', '82-123');
+INSERT INTO address (id, street, city, houseNumber, zipCode) VALUES (2, 'Dedala', 'Gdynia', '4', '81-421');
+
+INSERT INTO client (id, address_id, firstName, lastName, phoneNumber, pesel) VALUES (1, 1, 'Stefan', 'Klient', '943255235', '93435632544');
+INSERT INTO client (id, address_id, firstName, lastName, phoneNumber, pesel) VALUES (2, 2, 'Wiesław', 'Klient', '987654321','93256524612');
 
 INSERT INTO car (id, clientid, make, model, year, registrationNumber, vin, dateOfFirstRegistration, vehiclecheckup, vehiclemileage, engineCapacity, enginePower, fuelType) VALUES (1, 1, 'Polonez', 'Caro', 1988, 'GA234f','12345678901234567', '1988-10-05', true, 300103, '1.2', '62 KM', 'benzyna');
 INSERT INTO car (id, clientid, make, model, year, registrationNumber, vin, dateOfFirstRegistration, vehiclecheckup, vehiclemileage, engineCapacity, enginePower, fuelType) VALUES (2, 2, 'Fiat', '125p', 1972, 'GDA235', '23465345324234434', '1975-12-04', true, 242433, '1.5', '78 KM', 'gaz');

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="fragments/header :: head"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h3 class="display-2 text-center"> Dane zamówienia : </h3>
+    <br>
+    <div th:if="${repairOrder != null}">
+        <table class="table table-hover">
+            <tbody>
+            <tr th:if="${repairOrder.date != null}">
+                <td>Data: </td>
+                <td th:text="${repairOrder.date}"/>
+            </tr>
+            <tr th:if="${repairOrder.totalCost != null}">
+                <td>Koszt całkowity: </td>
+                <td th:text="${repairOrder.totalCost}"/>
+            </tr>
+            <tr th:if="${repairOrder.description != null}">
+                <td>Opis: </td>
+                <td th:text="${repairOrder.description}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3 class="display-2 text-center"> Dane klienta : </h3>
+    <br>
+    <div th:if="${repairOrder.client != null}">
+        <table class="table table-hover">
+            <tbody>
+            <tr th:if="${repairOrder.client.firstName != null}">
+                <td>Imię: </td>
+                <td th:text="${repairOrder.client.firstName}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.lastName != null}">
+                <td>Nazwisko: </td>
+                <td th:text="${repairOrder.client.lastName}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.phoneNumber != null}">
+                <td>Numer telefonu: </td>
+                <td th:text="${repairOrder.client.phoneNumber}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.pesel != null}">
+                <td>Pesel: </td>
+                <td th:text="${repairOrder.client.pesel}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.address.street != null}">
+                <td>Ulica: </td>
+                <td th:text="${repairOrder.client.address.street}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.address.city != null}">
+                <td>Miejscowość: </td>
+                <td th:text="${repairOrder.client.address.city}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.address.houseNumber != null}">
+                <td>Numer domu: </td>
+                <td th:text="${repairOrder.client.address.houseNumber}"/>
+            </tr>
+            <tr th:if="${repairOrder.client.address.zipCode != null}">
+                <td>Kod pocztowy: </td>
+                <td th:text="${repairOrder.client.address.zipCode}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3 class="display-2 text-center"> Dane samochodu : </h3>
+    <br>
+    <div th:if="${repairOrder.car != null}">
+        <table class="table table-hover">
+            <tbody>
+            <tr th:if="${repairOrder.car.make != null}">
+                <td>Marka: </td>
+                <td th:text="${repairOrder.car.make}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.model != null}">
+                <td>Model: </td>
+                <td th:text="${repairOrder.car.model}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.year != null}">
+                <td>Rocznik: </td>
+                <td th:text="${repairOrder.car.year}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.registrationNumber != null}">
+                <td>Numer rejestracyjny: </td>
+                <td th:text="${repairOrder.car.registrationNumber}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.vin != null}">
+                <td>Numer vin: </td>
+                <td th:text="${repairOrder.car.vin}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.dateOfFirstRegistration != null}">
+                <td>Data pierwszej rejestracji: </td>
+                <td th:text="${repairOrder.car.dateOfFirstRegistration}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.vehicleCheckup != null}">
+                <td>Przegląd: </td>
+                <td th:if="${repairOrder.car.vehicleCheckup == true}" th:text="aktualny"/>
+                <td th:if="${repairOrder.car.vehicleCheckup == false}" th:text="nieaktualny"/>
+            </tr>
+            <tr th:if="${repairOrder.car.vehicleMileage != null}">
+                <td>Przebieg: </td>
+                <td th:text="${repairOrder.car.vehicleMileage}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.engineCapacity != null}">
+                <td>Pojemność silnika: </td>
+                <td th:text="${repairOrder.car.engineCapacity}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.enginePower != null}">
+                <td>Moc silnika: </td>
+                <td th:text="${repairOrder.car.enginePower}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.fuelType != null}">
+                <td>Typ paliwa: </td>
+                <td th:text="${repairOrder.car.fuelType}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -32,7 +32,7 @@ public abstract class AbstractPersonEntity extends AbstractEntity {
     @OneToOne(fetch = FetchType.EAGER)
     private Account account;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Address address;
 
 }

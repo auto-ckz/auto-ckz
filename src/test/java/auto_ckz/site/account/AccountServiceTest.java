@@ -34,11 +34,11 @@ public class AccountServiceTest {
 	public ExpectedException thrown = ExpectedException.none();
 
 	@Test
-	public void shouldInitializeWithSixDemoUsers() {
+	public void shouldInitializeWithSixSevenUsers() {
 		// act
 		accountService.initialize();
 		// assert
-		verify(accountRepositoryMock, times(6)).save(any(Account.class));
+		verify(accountRepositoryMock, times(7)).save(any(Account.class));
 	}
 
 	@Test

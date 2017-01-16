@@ -1,9 +1,6 @@
 package auto_ckz.site.home;
 
 import auto_ckz.common.constant.Role;
-import auto_ckz.domain.address.Address;
-import auto_ckz.domain.client.Client;
-import auto_ckz.domain.client.ClientRepository;
 import auto_ckz.site.account.Account;
 import auto_ckz.site.account.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +29,7 @@ public class HomeController {
 			case Role.ROLE_MECHANIC:
 				return "redirect:/mechanics/";
 			case Role.ROLE_CUSTOMER_SERVICE:
-				return "redirect:/customerService/";
+				return "redirect:/memberOfCustomerService/";
 			default:
 				return "redirect:/clients";
 
