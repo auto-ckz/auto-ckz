@@ -19,13 +19,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Demo project</a>
+            <a class="navbar-brand" href="#">Auto-CKZ</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#" th:href="@{/}">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="active"><a href="#" th:href="@{/}">Strona głowna</a></li>
+                <!--<li><a href="#about">About</a></li>-->
+                <!--<li><a href="#contact">Contact</a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li sec:authorize="hasRole('ROLE_DIRECTOR')" class="dropdown">
@@ -48,12 +48,12 @@
                 </li>
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">
                     <a href="/signin" th:href="@{/signin}">
-                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Zaloguj
                     </a>
                 </li>
                 <li th:if="${#authorization.expression('isAuthenticated()')}">
                     <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
-                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Wyloguj
                     </a>
                     <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
