@@ -8,6 +8,59 @@
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
+    <h3 class="display-2 text-center"> Dane samochodu : </h3>
+    <br>
+    <div th:if="${repairOrder.car != null}">
+        <table class="table table-hover">
+            <tbody>
+            <tr th:if="${repairOrder.car.make != null}">
+                <td>Marka: </td>
+                <td th:text="${repairOrder.car.make}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.model != null}">
+                <td>Model: </td>
+                <td th:text="${repairOrder.car.model}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.year != null}">
+                <td>Rocznik: </td>
+                <td th:text="${repairOrder.car.year}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.registrationNumber != null}">
+                <td>Numer rejestracyjny: </td>
+                <td th:text="${repairOrder.car.registrationNumber}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.vin != null}">
+                <td>Numer vin: </td>
+                <td th:text="${repairOrder.car.vin}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.dateOfFirstRegistration != null}">
+                <td>Data pierwszej rejestracji: </td>
+                <td th:text="${repairOrder.car.dateOfFirstRegistration}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.vehicleCheckup != null}">
+                <td>Przegląd: </td>
+                <td th:if="${repairOrder.car.vehicleCheckup == true}" th:text="aktualny"/>
+                <td th:if="${repairOrder.car.vehicleCheckup == false}" th:text="nieaktualny"/>
+            </tr>
+            <tr th:if="${repairOrder.car.vehicleMileage != null}">
+                <td>Przebieg: </td>
+                <td th:text="${repairOrder.car.vehicleMileage}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.engineCapacity != null}">
+                <td>Pojemność silnika: </td>
+                <td th:text="${repairOrder.car.engineCapacity}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.enginePower != null}">
+                <td>Moc silnika: </td>
+                <td th:text="${repairOrder.car.enginePower}"/>
+            </tr>
+            <tr th:if="${repairOrder.car.fuelType != null}">
+                <td>Typ paliwa: </td>
+                <td th:text="${repairOrder.car.fuelType}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <h3 class="display-2 text-center">Lista napraw</h3>
     <div th:if="${repairs != null}" >
         <label for="selectRepair">Wybierz dokonywaną naprawę: </label>
