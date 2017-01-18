@@ -46,8 +46,22 @@ public class MemberOfCustomerServiceController {
         if(repairOrder == null) {
             throw new NotFoundException("Nie znaleziono zamówienia");
         }
-        model.addAttribute("repairs", repairList);
+        model.addAttribute("repairList", repairList);
         model.addAttribute("repairOrder", repairOrder);
         return "/memberOfCustomerService/overview";
+    }
+    @RequestMapping(value= "/repair_order/{id}/edit/{id2}", method = RequestMethod.GET)
+    public String editRepair(@PathVariable long id, @PathVariable long id2,  Model model) throws NotFoundException {
+        Repair repair = repairRepository.findOne(id2);
+        RepairOrder repairOrder = repairOrderRepository.findOne(id);
+        if(repair == null) {
+            throw new NotFoundException("Nie można znaleźć naprawy z id: " + id2);
+        }
+        if(repairOrder == null) {
+            throw new NotFoundException("Nie znaleziono zamówienia");
+        }
+        model.addAttribute("repair", repair);
+        model.addAttribute("repairOrder", repairOrder);
+        return "/memberOfCustomerService/edit";
     }
 }

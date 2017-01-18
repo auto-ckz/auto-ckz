@@ -26,7 +26,7 @@
             </tbody>
         </table>
     </div>
-    <h3 class="display-2 text-center"> Dane klienta : </h3>
+    <br><h3 class="display-2 text-center"> Dane klienta : </h3>
     <br>
     <div th:if="${repairOrder.client != null}">
         <table class="table table-hover">
@@ -66,7 +66,7 @@
             </tbody>
         </table>
     </div>
-    <h3 class="display-2 text-center"> Dane samochodu : </h3>
+    <br><h3 class="display-2 text-center"> Dane samochodu : </h3>
     <br>
     <div th:if="${repairOrder.car != null}">
         <table class="table table-hover">
@@ -115,6 +115,37 @@
             <tr th:if="${repairOrder.car.fuelType != null}">
                 <td>Typ paliwa: </td>
                 <td th:text="${repairOrder.car.fuelType}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><h3 class="display-2 text-center"> Wszystkie naprawy: </h3>
+    <br>
+    <div th:if="${repairList != null}">
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>#</th>
+                <th>Opis:</th>
+                <th>Status naprawy:</th>
+                <th>Uwagi:</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="repair : ${repairList}">
+                <th scope="row"></th>
+                <td class="text-left" th:text="${repair.description}"/>
+                <td th:switch="${repair.status.name()}">
+                    <span th:case="'NOT_STARTED'" class="label label-default">Nie rozpoczęto</span>
+                    <span th:case="'IN_PROGRESS'" class="label label-primary">W trakcie</span>
+                    <span th:case="'SUSPENDED'" class="label label-warning">Wstrzymano</span>
+                    <span th:case="'DONE'" class="label label-success">Zakończono</span>
+                    <span th:case="*" class="label label-danger">Nieznany</span>
+                </td>
+                <td class="text-left" th:text="${repair.observation}"/>
+                <td><a class="btn btn-success" th:href="@{/memberOfCustomerService/repair_order/{id}/edit/{id2}(id=${repairOrder.id}, id2=${repair.id})}">Edytuj</a></td>
             </tr>
             </tbody>
         </table>

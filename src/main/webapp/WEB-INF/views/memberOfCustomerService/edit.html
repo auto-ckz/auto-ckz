@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="fragments/header :: head"/>
+    <script src="/resources/js/memberOfCustomerServicePanel.js" th:src="@{/resources/js/memberOfCustomerServicePanel.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <p id="RepairOrderId" th:text="${repairOrder.id}" hidden></p>
+    <form id="editRepair" name="editRepair" class="form-horizontal" action="#" th:object="${repair}">
+        <div class="form-group">
+            <input class="form-control" id="id" type="hidden" th:field="*{id}"/>
+        </div>
+        <div class="form-group">
+            <h4 class="text-left"> Opis naprawy: </h4>
+            <input class="form-control" id="description" th:field="*{description}"/>
+        </div>
+        <div class="form-group">
+            <h4 class="text-left"> Status naprawy: </h4>
+            <select class="form-control" id="status" th:field="*{status}">
+                <div th:each="status : ${repair.status.values()}" th:remove="tag">
+                    <option th:value="${status}" th:text="${status}" th:selected="${repair.status == status}"/>
+                </div>
+            </select>
+        </div>
+        <div class="form-group">
+            <h4 class="text-left" > Uwagi: </h4>
+            <textarea class="form-control" id="observation" rows="3" th:field="*{observation}"/>
+        </div>
+        <button type="submit" class="btn btn-success">Zapisz zmiany</button>
+    </form>
+</div>
+</body>
+</html>
