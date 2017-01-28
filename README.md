@@ -6,14 +6,14 @@
 * Maven: `3.3.x`
 * PostgreSQL: `9.4.x`
 
-#### Uruchamianie aplikacji z linni poleceń:
+#### Uruchamianie aplikacji z linii poleceń:
 
-`"katalog aplikacji"\mvn tomcat7:run`
+`mvn tomcat7:run`
 
 
 #### Uruchamianie testów:
 
-`"katalog aplikacji"\mvn test`
+`mvn test`
 
 
 #### Uruchomienie serwisu:
@@ -22,16 +22,16 @@
 
 #### Loginy, hasła i role do testowania aplikacji.
 
-  Rola: Admin
+ * Rola: Admin
   `Login: admin@admin.com`
   `Hasło: admin`
-  Rola: Klient
+ * Rola: Klient
   `Login: client@client.com`
   `Hasło: client`
-  Rola: Mechanik
+ * Rola: Mechanik
   `Login: zbigniew@mechanic.com`
   `Hasło: zbigniew`
-  Rola: Obsługa serwisu
+ * Rola: Obsługa serwisu
   `Login: marek@service.com`
   `Hasło: marek`
   
