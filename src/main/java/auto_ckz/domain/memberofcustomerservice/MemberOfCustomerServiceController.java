@@ -41,7 +41,7 @@ public class MemberOfCustomerServiceController {
         List<Repair> repairList = repairRepository.findByRepairOrderId(id);
         RepairOrder repairOrder = repairOrderRepository.findOne(id);
         if(repairList == null) {
-            throw new NotFoundException("Nie można napraw dla zlecenia z id: " + id);
+            throw new NotFoundException("Nie można znaleźć napraw dla zlecenia z id: " + id);
         }
         if(repairOrder == null) {
             throw new NotFoundException("Nie znaleziono zamówienia z id: " + id);
