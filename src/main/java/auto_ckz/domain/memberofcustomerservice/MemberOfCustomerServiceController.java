@@ -41,10 +41,10 @@ public class MemberOfCustomerServiceController {
         List<Repair> repairList = repairRepository.findByRepairOrderId(id);
         RepairOrder repairOrder = repairOrderRepository.findOne(id);
         if(repairList == null) {
-            throw new NotFoundException("Nie można znaleźć naprawy z id: " + id);
+            throw new NotFoundException("Nie można napraw dla zlecenia z id: " + id);
         }
         if(repairOrder == null) {
-            throw new NotFoundException("Nie znaleziono zamówienia");
+            throw new NotFoundException("Nie znaleziono zamówienia z id: " + id);
         }
         model.addAttribute("repairList", repairList);
         model.addAttribute("repairOrder", repairOrder);
@@ -58,7 +58,7 @@ public class MemberOfCustomerServiceController {
             throw new NotFoundException("Nie można znaleźć naprawy z id: " + id2);
         }
         if(repairOrder == null) {
-            throw new NotFoundException("Nie znaleziono zamówienia");
+            throw new NotFoundException("Nie znaleziono zamówienia z id: " + id);
         }
         model.addAttribute("repair", repair);
         model.addAttribute("repairOrder", repairOrder);
