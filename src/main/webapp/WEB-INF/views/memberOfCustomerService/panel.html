@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="fragments/header :: head"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <h1 class="display-2 text-center">Panel obsługi klienta</h1>
+    <div class="jumbotron text-center">
+        <div th:if="${repairOrders != null}" >
+                 <form id="chooseRepairOrders" name="chooseRepairOrders" class="form-horizontal" action="#">
+                     <table class="table">
+                         <thead class="thead-inverse">
+                         <tr>
+                             <th>#</th>
+                             <th>Imię i Nazwisko:</th>
+                             <th>Telefon kontaktowy:</th>
+                             <th>Data zamówienia</th>
+                             <th>Koszt całkowity</th>
+                             <th>Pojazd</th>
+                             <th></th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         <tr th:each="repairOrder : ${repairOrders}">
+                             <th scope="row"></th>
+                             <td class="text-left" th:text="${repairOrder.client.firstName} + ' ' + ${repairOrder.client.lastName}"/>
+                             <td class="text-left" th:text="${repairOrder.client.phoneNumber}"/>
+                             <td class="text-left" th:text="${repairOrder.date}"/>
+                             <td class="text-left" th:text="${repairOrder.totalCost}"/>
+                             <td class="text-left" th:text="${repairOrder.car.make} + ' ' + ${repairOrder.car.model}"/>
+                             <td><a class="btn btn-success" th:href="@{/memberOfCustomerService/repair_order/{id}(id=${repairOrder.id})}">Wybierz</a></td>
+                         </tr>
+                         </tbody>
+                     </table>
+                 </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
